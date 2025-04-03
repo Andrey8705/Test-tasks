@@ -48,12 +48,11 @@ const UserList: React.FC = () => {
     <div>
       <input
         type="text"
-        placeholder="Поиск по имени"
         value={searchTerm}
         onChange={handleSearchChange}
-        className="mb-4 p-2 border border-gray-300 rounded"
+        className="w-[1120px] h-[48px] mb-4 p-2 border border-gray-300 rounded"
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="w-[357px] h-[314px] gap-[24px] rounded-[16px] p-[24px] flex flex-col items-start justify-start bg-[#F5F5F5]">
         {filteredUsers.map(user => (
           <div key={user.id} className="border p-4 rounded shadow-md">
             <h3 className="text-lg font-semibold">{user.name}</h3>
