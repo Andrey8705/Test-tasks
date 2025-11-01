@@ -40,7 +40,7 @@
 
 ---
 
-[Нажми меня](https://www.blast.hk/proxy.php?image=https%3A%2F%2Fimg-webcalypt.ru%2Fuploads%2Fadmin%2Fimages%2Fmeme-templates%2FFpEuJD5gWxlV5uXQ9Jz45nH78TpSehUr.jpg&hash=8ca9121d61c5d142a216ce09ad5e8ce7)
+[Нажми меня](https://tenor.com/ru/view/linux-linux-developer-linux-hacker-hacker-linux-user-gif-25806054)
 
 ---
 
