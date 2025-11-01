@@ -16,5 +16,6 @@
 
 
 Или даже добавлять код
-`a = "Hello, world!"
- print(a)`
+`a = "Hello, world!"`
+
+`print(a)`
