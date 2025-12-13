@@ -14,7 +14,12 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2"
   },
-  "keywords": ["prettier", "demo", "vscode", "cursor"],
+  "keywords": [
+    "prettier",
+    "demo",
+    "vscode",
+    "cursor"
+  ],
   "author": "",
   "license": "MIT"
 }

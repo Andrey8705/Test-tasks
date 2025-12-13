@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "settings": {
+        "theme": "dark",
+        "notifications": {
+          "email": true,
+          "push": false,
+          "preferences": {
+            "frequency": "daily",
+            "types": ["updates", "messages"]
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "api": {
+      "endpoint": "https://api.example.com",
+      "version": "v1",
+      "auth": {
+        "type": "bearer",
+        "token": "xxx"
+      }
+    }
+  }
+}

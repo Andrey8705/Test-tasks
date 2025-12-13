@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout - Tailwind Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Адаптивная навигация -->
+  <nav class="bg-white shadow-lg">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="text-2xl font-bold text-blue-600">Logo</div>
+        <!-- Скрыто на мобильных (hidden md:flex) -->
+        <div class="hidden md:flex space-x-6">
+          <a href="#" class="text-gray-700 hover:text-blue-600">Главная</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">О нас</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Контакты</a>
+        </div>
+        <!-- Бургер меню (показано на мобильных) -->
+        <button class="md:hidden text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Адаптивная сетка -->
+  <div class="container mx-auto px-4 py-8">
+    <!-- 1 колонка на mobile, 2 на tablet, 3 на desktop, 4 на xl -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-bold mb-2">Карточка 1</h3>
+        <p class="text-gray-600">Mobile: 1 колонка</p>
+        <p class="text-gray-600">Tablet: 2 колонки</p>
+        <p class="text-gray-600">Desktop: 3 колонки</p>
+        <p class="text-gray-600">XL: 4 колонки</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-bold mb-2">Карточка 2</h3>
+        <img src="https://via.placeholder.com/300" alt="placeholder" class="w-full h-48 object-cover rounded mb-4">
+        <p class="text-gray-600">Адаптивное изображение</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-bold mb-2">Карточка 3</h3>
+        <div class="space-y-2">
+          <div class="text-sm sm:text-base lg:text-lg">Адаптивный текст</div>
+          <div class="p-2 sm:p-4 lg:p-6 bg-blue-100">Адаптивный padding</div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-bold mb-2">Карточка 4</h3>
+        <button class="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Адаптивная кнопка
+        </button>
+      </div>
+    </div>
+
+    <!-- Breakpoints демо -->
+    <div class="mt-8 p-6 bg-white rounded-lg shadow">
+      <h2 class="text-2xl font-bold mb-4">Активный breakpoint:</h2>
+      <div class="text-xl font-mono">
+        <span class="sm:hidden">📱 Default (< 640px)</span>
+        <span class="hidden sm:inline md:hidden">📱 SM (≥ 640px)</span>
+        <span class="hidden md:inline lg:hidden">💻 MD (≥ 768px)</span>
+        <span class="hidden lg:inline xl:hidden">🖥️ LG (≥ 1024px)</span>
+        <span class="hidden xl:inline 2xl:hidden">🖥️ XL (≥ 1280px)</span>
+        <span class="hidden 2xl:inline">🖥️ 2XL (≥ 1536px)</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
