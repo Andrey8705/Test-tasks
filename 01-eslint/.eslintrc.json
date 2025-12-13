@@ -1,0 +1,71 @@
+{
+  "env": {
+    // Окружение выполнения кода
+    "browser": true, // Глобальные переменные браузера (window, document)
+    "es2021": true, // Поддержка ES2021 синтаксиса
+    "node": true // Глобальные переменные Node.js (process, __dirname)
+  },
+  "extends": [
+    // Наборы рекомендуемых правил
+    "eslint:recommended" // Базовые рекомендуемые правила ESLint
+  ],
+  "parserOptions": {
+    // Настройки парсера
+    "ecmaVersion": "latest", // Последняя версия ECMAScript
+    "sourceType": "module", // Использование ES модулей (import/export)
+    "ecmaFeatures": {
+      "jsx": true // Поддержка JSX синтаксиса
+    }
+  },
+  "rules": {
+    // ========== ТОП-15 САМЫХ ПОЛЕЗНЫХ ПРАВИЛ ==========
+
+    // 1. Запретить использование console (предупреждение)
+    "no-console": "warn",
+
+    // 2. Запретить неиспользуемые переменные (ошибка)
+    "no-unused-vars": ["error", {
+      "argsIgnorePattern": "^_", // Игнорировать аргументы начинающиеся с _
+      "varsIgnorePattern": "^_"
+    }],
+
+    // 3. Требовать === и !== вместо == и != (ошибка)
+    "eqeqeq": ["error", "always"],
+
+    // 4. Предпочитать const для переменных, которые не переназначаются (ошибка)
+    "prefer-const": "error",
+
+    // 5. Запретить var, использовать let/const (ошибка)
+    "no-var": "error",
+
+    // 6. Требовать точки с запятой (ошибка)
+    "semi": ["error", "always"],
+
+    // 7. Использовать одинарные кавычки (ошибка)
+    "quotes": ["error", "single", { "avoidEscape": true }],
+
+    // 8. Запретить trailing запятые (ошибка)
+    "comma-dangle": ["error", "never"],
+
+    // 9. Требовать пробелы вокруг стрелок в arrow functions (ошибка)
+    "arrow-spacing": ["error", { "before": true, "after": true }],
+
+    // 10. Отступы - 2 пробела (ошибка)
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+
+    // 11. Запретить множественные пустые строки (ошибка)
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+
+    // 12. Требовать пробел перед блоками кода (ошибка)
+    "space-before-blocks": "error",
+
+    // 13. Запретить пробелы внутри круглых скобок (ошибка)
+    "space-in-parens": ["error", "never"],
+
+    // 14. Требовать пробелы вокруг операторов (ошибка)
+    "space-infix-ops": "error",
+
+    // 15. Запретить debugger в production коде (предупреждение)
+    "no-debugger": "warn"
+  }
+}

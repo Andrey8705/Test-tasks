@@ -1,0 +1,30 @@
+{
+  "recommendations": [
+    // JavaScript/TypeScript инструменты
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+
+    // CSS фреймворки
+    "bradlc.vscode-tailwindcss",
+
+    // Python разработка
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter",
+
+    // Контейнеризация
+    "ms-azuretools.vscode-docker",
+
+    // Git инструменты
+    "eamodio.gitlens",
+
+    // Визуальные помощники
+    "usernamehw.errorlens",
+    "oderwat.indent-rainbow",
+
+    // Тестирование
+    "orta.vscode-jest",
+    "hbenl.vscode-test-explorer"
+  ],
+  "unwantedRecommendations": []
+}

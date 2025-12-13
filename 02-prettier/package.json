@@ -1,0 +1,20 @@
+{
+  "name": "prettier-demo",
+  "version": "1.0.0",
+  "description": "Демонстрация возможностей Prettier расширения для VS Code",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:js": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "format:styles": "prettier --write \"**/*.{css,scss,html}\"",
+    "format:docs": "prettier --write \"**/*.{md,json,yml,yaml}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2"
+  },
+  "keywords": ["prettier", "demo", "vscode", "cursor"],
+  "author": "",
+  "license": "MIT"
+}

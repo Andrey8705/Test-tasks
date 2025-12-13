@@ -1,0 +1,26 @@
+{
+  "name": "example-project",
+  "version": "1.0.0",
+  "description": "Пример форматирования JSON с Prettier",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1"
+  },
+  "keywords": ["example", "prettier", "json"],
+  "author": "Demo Author",
+  "license": "MIT"
+}

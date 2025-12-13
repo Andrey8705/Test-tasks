@@ -1,0 +1,127 @@
+{
+  // ==================== ОБЩИЕ НАСТРОЙКИ ====================
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+
+  // ==================== ESLINT ====================
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.lintTask.enable": true,
+
+  // ==================== PRETTIER ====================
+  "prettier.requireConfig": true,
+  "prettier.enable": true",
+
+  // ==================== PYTHON ====================
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  // ==================== DOCKER ====================
+  "docker.containers.groupBy": "Compose Project Name",
+  "docker.showStartPage": false,
+
+  // ==================== GITLENS ====================
+  "gitlens.currentLine.enabled": true,
+  "gitlens.codeLens.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.blame.format": "${author|10} ${date}",
+
+  // ==================== ERROR LENS ====================
+  "errorLens.enabled": true,
+  "errorLens.errorBackground": "rgba(255,0,0,0.1)",
+  "errorLens.errorForeground": "#ff6b6b",
+  "errorLens.warningBackground": "rgba(255,165,0,0.1)",
+  "errorLens.warningForeground": "#ffa500",
+  "errorLens.infoBackground": "rgba(0,123,255,0.1)",
+  "errorLens.infoForeground": "#007bff",
+  "errorLens.fontWeight": "600",
+  "errorLens.fontSize": "0.9em",
+  "errorLens.delay": 500,
+
+  // ==================== JEST ====================
+  "jest.autoRun": "off",
+  "jest.showCoverageOnLoad": false,
+
+  // ==================== TEST EXPLORER ====================
+  "testExplorer.useNativeTesting": true,
+  "testExplorer.codeLens": true,
+  "testExplorer.gutterDecoration": true,
+  "testExplorer.errorDecoration": true,
+
+  // ==================== INDENT RAINBOW ====================
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.1)",
+    "rgba(127,255,127,0.1)",
+    "rgba(255,127,255,0.1)",
+    "rgba(79,236,236,0.1)"
+  ],
+  "indentRainbow.errorColor": "rgba(255,0,0,0.3)",
+  "indentRainbow.tabmixColor": "rgba(255,128,0,0.3)",
+
+  // ==================== TAILWIND CSS ====================
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["class:\\s*?[\"'`]([^\"'`]*).*?[\"'`]", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["className:\\s*?[\"'`]([^\"'`]*).*?[\"'`]", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+
+  // Отключить валидацию CSS для Tailwind
+  "css.validate": false,
+  "scss.validate": false,
+
+  // ==================== ЯЗЫКОВО-СПЕЦИФИЧНЫЕ НАСТРОЙКИ ====================
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

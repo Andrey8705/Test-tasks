@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  node-app:
+    build: ./examples/node-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  python-app:
+    build: ./examples/python-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development

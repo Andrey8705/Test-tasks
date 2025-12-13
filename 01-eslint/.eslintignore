@@ -1,0 +1,13 @@
+# Зависимости
+node_modules/
+package-lock.json
+
+# Сгенерированные файлы
+dist/
+build/
+coverage/
+*.min.js
+
+# Конфигурационные файлы (опционально)
+# .eslintrc.js
+# webpack.config.js
