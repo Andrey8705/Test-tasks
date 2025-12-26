@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Услуги и цены - AutoPaint Pro" description="Полный перечень услуг по покраске и ремонту автомобилей с ценами">
+	<section class="py-16">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800">
+				Наши услуги и цены
+			</h1>
+			<p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+				Предлагаем полный спектр услуг по покраске и ремонту автомобилей. Цены указаны ориентировочные и могут варьироваться в зависимости от сложности работ.
+			</p>
+
+			<!-- Services Grid -->
+			<div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+				<!-- Service 1: Full Paint -->
+				<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+					<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+						<h2 class="text-2xl font-bold">Полная покраска автомобиля</h2>
+					</div>
+					<div class="p-6">
+						<p class="text-gray-600 mb-4">
+							Комплексная покраска всего кузова автомобиля с полной подготовкой поверхности
+						</p>
+						<ul class="space-y-2 mb-6">
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Демонтаж/монтаж элементов</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Шлифовка и грунтовка</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Покраска в 3 слоя</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Лакировка и полировка</span>
+							</li>
+						</ul>
+						<div class="flex items-baseline justify-between border-t pt-4">
+							<span class="text-gray-600">от</span>
+							<span class="text-3xl font-bold text-blue-600">80 000 ₽</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Service 2: Partial Paint -->
+				<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+					<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+						<h2 class="text-2xl font-bold">Частичная покраска</h2>
+					</div>
+					<div class="p-6">
+						<p class="text-gray-600 mb-4">
+							Покраска отдельных элементов кузова (крыло, бампер, дверь и т.д.)
+						</p>
+						<ul class="space-y-2 mb-6">
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Подготовка поверхности</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Подбор цвета</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Покраска элемента</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Переход по лаку</span>
+							</li>
+						</ul>
+						<div class="flex items-baseline justify-between border-t pt-4">
+							<span class="text-gray-600">от</span>
+							<span class="text-3xl font-bold text-blue-600">8 000 ₽</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Service 3: Body Repair -->
+				<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+					<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+						<h2 class="text-2xl font-bold">Кузовной ремонт</h2>
+					</div>
+					<div class="p-6">
+						<p class="text-gray-600 mb-4">
+							Устранение вмятин, сколов и других повреждений кузова
+						</p>
+						<ul class="space-y-2 mb-6">
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Диагностика повреждений</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Рихтовка и вытяжка</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Шпатлевка и шлифовка</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Грунтовка</span>
+							</li>
+						</ul>
+						<div class="flex items-baseline justify-between border-t pt-4">
+							<span class="text-gray-600">от</span>
+							<span class="text-3xl font-bold text-blue-600">5 000 ₽</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Service 4: Polishing -->
+				<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+					<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+						<h2 class="text-2xl font-bold">Полировка кузова</h2>
+					</div>
+					<div class="p-6">
+						<p class="text-gray-600 mb-4">
+							Восстановление блеска и защита лакокрасочного покрытия
+						</p>
+						<ul class="space-y-2 mb-6">
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Мойка и обезжиривание</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Абразивная полировка</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Защитная полировка</span>
+							</li>
+							<li class="flex items-start">
+								<svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>
+								<span class="text-gray-700">Нанесение воска</span>
+							</li>
+						</ul>
+						<div class="flex items-baseline justify-between border-t pt-4">
+							<span class="text-gray-600">от</span>
+							<span class="text-3xl font-bold text-blue-600">12 000 ₽</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Additional Services -->
+			<div class="mt-16 max-w-4xl mx-auto">
+				<h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Дополнительные услуги</h2>
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<table class="w-full">
+						<tbody class="divide-y divide-gray-200">
+							<tr class="hover:bg-gray-50">
+								<td class="px-6 py-4 text-gray-700">Подбор краски по коду</td>
+								<td class="px-6 py-4 text-right font-semibold text-gray-800">от 2 000 ₽</td>
+							</tr>
+							<tr class="hover:bg-gray-50">
+								<td class="px-6 py-4 text-gray-700">Удаление сколов и царапин</td>
+								<td class="px-6 py-4 text-right font-semibold text-gray-800">от 1 500 ₽</td>
+							</tr>
+							<tr class="hover:bg-gray-50">
+								<td class="px-6 py-4 text-gray-700">Антикоррозийная обработка</td>
+								<td class="px-6 py-4 text-right font-semibold text-gray-800">от 8 000 ₽</td>
+							</tr>
+							<tr class="hover:bg-gray-50">
+								<td class="px-6 py-4 text-gray-700">Покраска дисков</td>
+								<td class="px-6 py-4 text-right font-semibold text-gray-800">от 6 000 ₽</td>
+							</tr>
+							<tr class="hover:bg-gray-50">
+								<td class="px-6 py-4 text-gray-700">Покраска суппортов</td>
+								<td class="px-6 py-4 text-right font-semibold text-gray-800">от 4 000 ₽</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Info Banner -->
+			<div class="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl p-8 text-center max-w-4xl mx-auto">
+				<h3 class="text-2xl font-bold mb-4">Нужна точная оценка стоимости?</h3>
+				<p class="mb-6 text-blue-100">
+					Свяжитесь с нами для бесплатной консультации и точного расчета стоимости работ для вашего автомобиля
+				</p>
+				<a href="/contacts" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+					Получить консультацию
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

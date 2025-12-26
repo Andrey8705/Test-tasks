@@ -1,0 +1,712 @@
+---
+import WebGLLayout from '../layouts/WebGLLayout.astro';
+---
+
+<WebGLLayout title="AutoPaint Pro - Премиальная покраска автомобилей" description="Профессиональная покраска и кузовной ремонт автомобилей. Превосходное качество и индивидуальный подход.">
+
+	<!-- HEADER -->
+	<header class="fixed top-0 w-full border-b border-white/5 bg-black/50 backdrop-blur-md" style="z-index: 50;">
+		<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+			<div class="flex items-center gap-2">
+				<span class="font-bold tracking-tight text-sm">AUTOPAINT PRO</span>
+			</div>
+
+			<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+				<a href="#home" class="hover:text-white transition-colors">Главная</a>
+				<a href="#gallery" class="hover:text-white transition-colors">Наши работы</a>
+				<a href="#testimonials" class="hover:text-white transition-colors">Отзывы</a>
+				<a href="#contact" class="hover:text-white transition-colors">Контакты</a>
+			</nav>
+
+			<a href="tel:+74951234567" class="hidden md:block text-sm font-medium text-white hover:text-cyan-300 transition-colors">
+				+7 (495) 123-45-67
+			</a>
+
+			<!-- Mobile Menu Toggle -->
+			<button class="md:hidden text-neutral-400" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M4 5h16M4 12h16M4 19h16"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-neutral-900 border-b border-white/10 p-4 flex flex-col gap-4 md:hidden">
+			<a href="#home" class="text-neutral-400 hover:text-white">Главная</a>
+			<a href="#gallery" class="text-neutral-400 hover:text-white">Наши работы</a>
+			<a href="#testimonials" class="text-neutral-400 hover:text-white">Отзывы</a>
+			<a href="#contact" class="text-cyan-400">Контакты</a>
+		</div>
+	</header>
+
+	<main style="position: relative; z-index: 1;">
+		<!-- HERO SECTION -->
+		<section id="home" class="relative min-h-screen sm:px-6 lg:px-8 md:py-20 w-full max-w-7xl mx-auto pt-24 px-4 pb-14 flex items-center">
+		<div class="relative w-full">
+			<div class="flex items-center justify-center">
+				<span class="inline-flex items-center gap-2 text-11 uppercase tracking-wide border rounded-full px-3 py-1 text-slate-300/80 bg-white/5 border-white/10">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+						<path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path>
+						<path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
+					</svg>
+					Премиальное качество
+				</span>
+			</div>
+
+			<div class="text-center max-w-3xl mt-6 mx-auto">
+				<h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">Превратите Ваш Автомобиль</h2>
+				<h2 class="text-4xl md:text-6xl font-semibold tracking-tight text-slate-50 mt-1">
+					в <span class="bg-clip-text italic font-playfair bg-gradient-to-r from-slate-200 via-cyan-300 to-indigo-300 text-transparent">Произведение Искусства</span>
+				</h2>
+				<p class="mt-4 text-base md:text-lg text-slate-400">
+					Профессиональная покраска и кузовной ремонт с использованием передовых технологий и премиальных материалов
+				</p>
+
+				<!-- CTA Button -->
+				<div class="relative inline-block group mt-6">
+					<a href="#contact" class="cta-button relative z-10 overflow-hidden text-white bg-neutral-900/60 border-white/20 border rounded-xl py-3 px-6 inline-block">
+						<span class="relative z-10 inline-flex items-center gap-2 font-semibold">
+							Записаться на консультацию
+							<svg class="h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"></path>
+							</svg>
+						</span>
+						<span class="glow-line pointer-events-none absolute bottom-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" style="left: 50%; right: 50%;"></span>
+					</a>
+					<span aria-hidden="true" class="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 h-6 w-52 rounded-full opacity-70 group-hover:opacity-100 transition-opacity" style="background: radial-gradient(60% 100% at 50% 50%, rgba(255,255,255,.45), rgba(255,255,255,.22) 35%, transparent 70%); filter: blur(10px) saturate(120%);"></span>
+				</div>
+
+				<!-- Contact info -->
+				<div class="mt-8 flex items-center justify-center gap-6 text-slate-400 flex-wrap">
+					<a href="mailto:info@autopaint.pro" class="group hover:text-slate-200 transition flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+							<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+							<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+						</svg>
+						info@autopaint.pro
+					</a>
+					<span class="h-4 w-px bg-white/10"></span>
+					<a href="tel:+74951234567" class="group hover:text-slate-200 transition flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+							<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
+						</svg>
+						+7 (495) 123-45-67
+					</a>
+				</div>
+
+				<!-- Separator -->
+				<div class="relative mt-14">
+					<div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-6">
+						<span class="block mx-auto w-80 h-10 rounded-full bg-white/20 blur-2xl opacity-70"></span>
+					</div>
+					<div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- НАШИ РАБОТЫ SECTION -->
+	<section id="gallery" class="py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto px-4">
+		<div class="mb-12">
+			<div class="flex items-center justify-center">
+				<span class="inline-flex items-center gap-2 text-11 uppercase tracking-wide border rounded-full px-3 py-1 text-slate-300/80 bg-white/5 border-white/10">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+						<rect width="18" height="18" x="3" y="3" rx="2"></rect>
+						<path d="M3 9h18"></path>
+						<path d="M9 21V9"></path>
+					</svg>
+					Портфолио
+				</span>
+			</div>
+
+			<div class="text-center max-w-3xl mt-6 mx-auto">
+				<h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">
+					Наши работы
+				</h2>
+			</div>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+			<!-- Card 1 -->
+			<article class="group overflow-hidden bg-neutral-900/90 border border-white/10 rounded-xl">
+				<div class="relative aspect-[16/10]">
+					<img src="https://images.pexels.com/photos/8470881/pexels-photo-8470881.jpeg" alt="Полная покраска Audi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+					<div class="absolute top-3 left-3 text-11 font-medium text-white bg-cyan-600/90 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/20">Новое</div>
+				</div>
+				<div class="p-4">
+					<div class="flex items-start justify-between">
+						<div>
+							<h3 class="text-base font-semibold tracking-tight text-neutral-100">Полная покраска Audi A6</h3>
+							<p class="text-xs text-neutral-400 mt-1 flex items-center gap-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+									<path d="M7.5 4.21l4.5 2.6 4.5-2.6"></path>
+									<path d="M7.5 19.79V14.6L3 12"></path>
+									<path d="M21 12l-4.5 2.6v5.19"></path>
+									<path d="M3.27 6.96L12 12.01l8.73-5.05"></path>
+									<path d="M12 22.08V12"></path>
+								</svg>
+								Полная покраска в камере
+							</p>
+						</div>
+						<div class="text-right">
+							<div class="text-lg font-semibold text-neutral-100">5 дней</div>
+							<div class="text-11 text-neutral-400">Декабрь 2024</div>
+						</div>
+					</div>
+					<div class="mt-4 flex items-center justify-between">
+						<button class="inline-flex items-center gap-2 text-xs font-medium tracking-tight text-neutral-200 bg-white/5 hover:bg-white/10 rounded-full px-3 py-1.5 border border-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+								<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+								<circle cx="12" cy="12" r="3"></circle>
+							</svg>
+							Подробнее
+						</button>
+						<button class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/10 text-neutral-200 hover:bg-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 stroke-[1.5]">
+								<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</article>
+
+			<!-- Card 2 -->
+			<article class="group overflow-hidden bg-neutral-900/90 border border-white/10 rounded-xl">
+				<div class="relative aspect-[16/10]">
+					<img src="https://images.pexels.com/photos/6870314/pexels-photo-6870314.jpeg" alt="Покраска BMW" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+					<div class="absolute top-3 left-3 text-11 font-medium text-white bg-indigo-900/90 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/20">Премиум</div>
+				</div>
+				<div class="p-4">
+					<div class="flex items-start justify-between">
+						<div>
+							<h3 class="text-base font-semibold tracking-tight text-neutral-100">Покраска BMW 3 Series</h3>
+							<p class="text-xs text-neutral-400 mt-1 flex items-center gap-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+									<path d="M7.5 4.21l4.5 2.6 4.5-2.6"></path>
+									<path d="M7.5 19.79V14.6L3 12"></path>
+									<path d="M21 12l-4.5 2.6v5.19"></path>
+									<path d="M3.27 6.96L12 12.01l8.73-5.05"></path>
+									<path d="M12 22.08V12"></path>
+								</svg>
+								Матовое покрытие
+							</p>
+						</div>
+						<div class="text-right">
+							<div class="text-lg font-semibold text-neutral-100">6 дней</div>
+							<div class="text-11 text-neutral-400">Ноябрь 2024</div>
+						</div>
+					</div>
+					<div class="mt-4 flex items-center justify-between">
+						<button class="inline-flex items-center gap-2 text-xs font-medium tracking-tight text-neutral-200 bg-white/5 hover:bg-white/10 rounded-full px-3 py-1.5 border border-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+								<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+								<circle cx="12" cy="12" r="3"></circle>
+							</svg>
+							Подробнее
+						</button>
+						<button class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/10 text-neutral-200 hover:bg-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 stroke-[1.5]">
+								<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</article>
+
+			<!-- Card 3 -->
+			<article class="group overflow-hidden bg-neutral-900/90 border border-white/10 rounded-xl">
+				<div class="relative aspect-[16/10]">
+					<img src="https://images.pexels.com/photos/14615263/pexels-photo-14615263.jpeg" alt="Локальная покраска Mercedes" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+					<div class="absolute top-3 left-3 text-11 font-medium text-indigo-900 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/20">Экспресс</div>
+				</div>
+				<div class="p-4">
+					<div class="flex items-start justify-between">
+						<div>
+							<h3 class="text-base font-semibold tracking-tight text-neutral-100">Локальная покраска Mercedes C-Class</h3>
+							<p class="text-xs text-neutral-400 mt-1 flex items-center gap-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+									<path d="M7.5 4.21l4.5 2.6 4.5-2.6"></path>
+									<path d="M7.5 19.79V14.6L3 12"></path>
+									<path d="M21 12l-4.5 2.6v5.19"></path>
+									<path d="M3.27 6.96L12 12.01l8.73-5.05"></path>
+									<path d="M12 22.08V12"></path>
+								</svg>
+								Частичная покраска элементов
+							</p>
+						</div>
+						<div class="text-right">
+							<div class="text-lg font-semibold text-neutral-100">2 дня</div>
+							<div class="text-11 text-neutral-400">Октябрь 2024</div>
+						</div>
+					</div>
+					<div class="mt-4 flex items-center justify-between">
+						<button class="inline-flex items-center gap-2 text-xs font-medium tracking-tight text-neutral-200 bg-white/5 hover:bg-white/10 rounded-full px-3 py-1.5 border border-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 stroke-[1.5]">
+								<circle cx="6" cy="19" r="3"></circle>
+								<path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path>
+								<circle cx="18" cy="5" r="3"></circle>
+							</svg>
+							Процесс
+						</button>
+						<button class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/10 text-neutral-200 hover:bg-white/10">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 stroke-[1.5]">
+								<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<div class="mt-12 flex items-center justify-center">
+			<div class="relative inline-block group">
+				<a href="#gallery" class="cta-button relative z-10 overflow-hidden text-white bg-neutral-900/60 border-white/20 border rounded-xl py-3 px-6 inline-block">
+					<span class="relative z-10 inline-flex items-center gap-2 font-semibold">
+						Смотреть все работы
+						<svg class="h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"></path>
+						</svg>
+					</span>
+					<span class="glow-line pointer-events-none absolute bottom-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" style="left: 50%; right: 50%;"></span>
+				</a>
+				<span aria-hidden="true" class="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 h-6 w-52 rounded-full opacity-70 group-hover:opacity-100 transition-opacity" style="background: radial-gradient(60% 100% at 50% 50%, rgba(255,255,255,.45), rgba(255,255,255,.22) 35%, transparent 70%); filter: blur(10px) saturate(120%);"></span>
+			</div>
+		</div>
+	</section>
+
+	<!-- TESTIMONIALS SECTION -->
+	<section id="testimonials" class="py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto px-4">
+		<div class="mb-12">
+			<div class="flex items-center justify-center">
+				<span class="inline-flex items-center gap-2 text-11 uppercase tracking-wide border rounded-full px-3 py-1 text-slate-300/80 bg-white/5 border-white/10">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+						<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+					</svg>
+					Отзывы
+				</span>
+			</div>
+			<div class="text-center max-w-3xl mt-6 mx-auto">
+				<h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">
+					Реальные истории наших клиентов
+				</h2>
+			</div>
+			<div class="flex items-center justify-center">
+				<div class="mt-4 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 border-white/10 bg-white/5">
+				<span class="inline-flex items-center -space-x-2">
+					<img class="h-6 w-6 rounded-full ring-2 object-cover ring-neutral-900" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop" alt="Клиент 1">
+					<img class="h-6 w-6 rounded-full ring-2 object-cover ring-neutral-900" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop" alt="Клиент 2">
+					<img class="h-6 w-6 rounded-full ring-2 object-cover ring-neutral-900" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Клиент 3">
+					<img class="h-6 w-6 rounded-full ring-2 object-cover ring-neutral-900" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Клиент 4">
+				</span>
+				<span class="ml-2 inline-flex items-center gap-1 text-sm text-neutral-300">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-amber-400">
+						<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-amber-400">
+						<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-amber-400">
+						<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-amber-400">
+						<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-amber-400">
+						<path d="M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2"></path>
+					</svg>
+					<span class="ml-1">4.9/5 • 347 отзывов</span>
+				</span>
+			</div>
+			</div>
+		</div>
+
+		<div class="grid grid-cols-1 overflow-hidden md:grid-cols-3 py-12 gap-x-6 gap-y-6" style="mask-image: linear-gradient(180deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 15%, black 85%, transparent);">
+			<!-- Column 1 -->
+			<div class="overflow-hidden">
+				<div data-scroll-column="1" class="space-y-6">
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Покрасили мою BMW за 3 дня - результат превзошёл все ожидания! Цвет идеально ровный, покрытие как стекло.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Александр">
+							<div>
+								<div class="text-sm font-medium">Александр Петров</div>
+								<div class="text-xs text-neutral-400">BMW 5 Series</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Профессионалы своего дела! Устранили все дефекты после ДТП, машина выглядит как новая.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=256&auto=format&fit=crop" alt="Елена">
+							<div>
+								<div class="text-sm font-medium">Елена Соколова</div>
+								<div class="text-xs text-neutral-400">Mercedes-Benz C-Class</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Сделали полировку и керамическое покрытие - машина блестит как в салоне. Рекомендую!
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1546456073-6712f79251bb?q=80&w=256&auto=format&fit=crop" alt="Дмитрий">
+							<div>
+								<div class="text-sm font-medium">Дмитрий Волков</div>
+								<div class="text-xs text-neutral-400">Audi A6</div>
+							</div>
+						</div>
+					</article>
+
+					<!-- Duplicate -->
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Покрасили мою BMW за 3 дня - результат превзошёл все ожидания! Цвет идеально ровный, покрытие как стекло.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Александр">
+							<div>
+								<div class="text-sm font-medium">Александр Петров</div>
+								<div class="text-xs text-neutral-400">BMW 5 Series</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<!-- Column 2 -->
+			<div class="overflow-hidden">
+				<div data-scroll-column="2" class="space-y-6">
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Цены адекватные, сроки соблюдены, качество на высоте. Обращусь ещё раз!
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Михаил">
+							<div>
+								<div class="text-sm font-medium">Михаил Иванов</div>
+								<div class="text-xs text-neutral-400">Lexus RX</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Отличная команда мастеров. Перекрасили крылья после царапин - не отличить от заводской покраски.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop" alt="Ольга">
+							<div>
+								<div class="text-sm font-medium">Ольга Морозова</div>
+								<div class="text-xs text-neutral-400">Volkswagen Tiguan</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Сервис на уровне! Консультировали на каждом этапе, показывали промежуточные результаты.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=256&auto=format&fit=crop" alt="Игорь">
+							<div>
+								<div class="text-sm font-medium">Игорь Смирнов</div>
+								<div class="text-xs text-neutral-400">Toyota Camry</div>
+							</div>
+						</div>
+					</article>
+
+					<!-- Duplicate -->
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Цены адекватные, сроки соблюдены, качество на высоте. Обращусь ещё раз!
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Михаил">
+							<div>
+								<div class="text-sm font-medium">Михаил Иванов</div>
+								<div class="text-xs text-neutral-400">Lexus RX</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<!-- Column 3 -->
+			<div class="overflow-hidden">
+				<div data-scroll-column="3" class="space-y-6">
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Лучшая покраска в городе! Использовали оригинальную краску, подобрали идеально в цвет.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&auto=format&fit=crop" alt="Сергей">
+							<div>
+								<div class="text-sm font-medium">Сергей Козлов</div>
+								<div class="text-xs text-neutral-400">Porsche Cayenne</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Выправили и покрасили после серьёзного удара - машину не узнать. Спасибо за мастерство!
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=256&auto=format&fit=crop" alt="Наталья">
+							<div>
+								<div class="text-sm font-medium">Наталья Кузнецова</div>
+								<div class="text-xs text-neutral-400">Hyundai Tucson</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Гарантия на работу - это важно! Через месяц проверили покрытие, всё идеально держится.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Андрей">
+							<div>
+								<div class="text-sm font-medium">Андрей Новиков</div>
+								<div class="text-xs text-neutral-400">Mazda CX-5</div>
+							</div>
+						</div>
+					</article>
+
+					<!-- Duplicate -->
+					<article class="rounded-2xl border p-6 border-white/10 bg-neutral-900/70">
+						<blockquote class="text-base sm:text-lg text-neutral-100">
+							<span class="inline-flex items-start gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-400 mt-1 flex-shrink-0">
+									<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+									<path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+								</svg>
+								Лучшая покраска в городе! Использовали оригинальную краску, подобрали идеально в цвет.
+							</span>
+						</blockquote>
+						<div class="mt-5 flex items-center gap-3">
+							<img class="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&auto=format&fit=crop" alt="Сергей">
+							<div>
+								<div class="text-sm font-medium">Сергей Козлов</div>
+								<div class="text-xs text-neutral-400">Porsche Cayenne</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CONTACT SECTION -->
+	<section id="contact" class="py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto px-4">
+		<div class="mb-12">
+			<div class="flex items-center justify-center">
+				<span class="inline-flex items-center gap-2 text-11 uppercase tracking-wide border rounded-full px-3 py-1 text-slate-300/80 bg-white/5 border-white/10">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-cyan-300">
+						<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+					</svg>
+					Связаться с нами
+				</span>
+			</div>
+
+			<div class="text-center max-w-3xl mt-6 mx-auto">
+				<h2 class="md:text-6xl text-4xl font-semibold text-slate-50 tracking-tight">
+					Свяжитесь с нами
+				</h2>
+				<p class="mt-4 text-base md:text-lg text-slate-400">
+					Готовы преобразить ваш автомобиль? Свяжитесь с нами для бесплатной консультации
+				</p>
+			</div>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+			<!-- Contact Info -->
+			<div class="space-y-8">
+				<div>
+					<h3 class="text-lg font-semibold text-slate-50 mb-4">Контактная информация</h3>
+					<div class="space-y-4">
+						<div class="flex items-start gap-3">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-300 mt-0.5">
+								<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+							</svg>
+							<div>
+								<p class="text-slate-300">+7 (495) 123-45-67</p>
+								<p class="text-sm text-slate-500">Пн-Вс: 9:00 - 21:00</p>
+							</div>
+						</div>
+						<div class="flex items-start gap-3">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-300 mt-0.5">
+								<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+								<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+							</svg>
+							<div>
+								<p class="text-slate-300">info@autopaint.pro</p>
+								<p class="text-sm text-slate-500">Ответим в течение 1 часа</p>
+							</div>
+						</div>
+						<div class="flex items-start gap-3">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-300 mt-0.5">
+								<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+								<circle cx="12" cy="10" r="3"></circle>
+							</svg>
+							<div>
+								<p class="text-slate-300">Москва, ул. Примерная, д. 123</p>
+								<p class="text-sm text-slate-500">Рядом с метро</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Contact Form -->
+			<div class="bg-neutral-900/50 border border-white/10 rounded-xl p-6">
+				<h3 class="text-lg font-semibold text-slate-50 mb-4">Оставьте заявку</h3>
+				<form class="space-y-4">
+					<div>
+						<label class="block text-sm text-slate-300 mb-2">Имя</label>
+						<input type="text" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-slate-100 focus:outline-none focus:border-cyan-300 transition" placeholder="Ваше имя">
+					</div>
+					<div>
+						<label class="block text-sm text-slate-300 mb-2">Телефон</label>
+						<input type="tel" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-slate-100 focus:outline-none focus:border-cyan-300 transition" placeholder="+7 (___) ___-__-__">
+					</div>
+					<div>
+						<label class="block text-sm text-slate-300 mb-2">Сообщение</label>
+						<textarea rows="4" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-slate-100 focus:outline-none focus:border-cyan-300 transition resize-none" placeholder="Опишите вашу задачу"></textarea>
+					</div>
+					<button type="submit" class="w-full cta-button text-white bg-neutral-900/60 border-white/20 border rounded-xl py-3 px-6 font-semibold hover:bg-neutral-800 transition">
+						Отправить заявку
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
+	</main>
+
+	<!-- FOOTER -->
+	<footer class="border-t border-white/5 py-12 bg-black" style="position: relative; z-index: 1;">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="flex gap-4 flex-wrap items-center justify-between">
+				<!-- Brand -->
+				<a href="#" class="inline-flex items-center gap-2">
+					<span class="text-sm font-bold text-neutral-200 tracking-tight">AutoPaint Pro</span>
+				</a>
+
+				<!-- Socials -->
+				<div class="flex items-center gap-4 text-slate-400">
+					<a href="#" class="hover:text-slate-200 transition">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+							<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+							<rect width="4" height="12" x="2" y="9"></rect>
+							<circle cx="4" cy="4" r="2"></circle>
+						</svg>
+					</a>
+					<a href="#" class="hover:text-slate-200 transition">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+							<path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+							<path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
+						</svg>
+					</a>
+					<a href="#" class="hover:text-slate-200 transition">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+							<path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+							<path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+
+			<!-- Links -->
+			<nav class="flex flex-wrap gap-6 text-sm text-slate-400 mt-6">
+				<a href="#home" class="hover:text-slate-200 transition">Главная</a>
+				<a href="#gallery" class="hover:text-slate-200 transition">Наши работы</a>
+				<a href="#testimonials" class="hover:text-slate-200 transition">Отзывы</a>
+				<a href="#contact" class="hover:text-slate-200 transition">Контакты</a>
+				<a href="#" class="hover:text-slate-200 transition">Политика</a>
+				<a href="#" class="hover:text-slate-200 transition">Условия</a>
+			</nav>
+
+			<!-- Bottom meta -->
+			<div class="mt-8 flex items-center justify-between text-xs text-slate-500 flex-wrap gap-4">
+				<span>© 2025 AutoPaint Pro. Все права защищены.</span>
+				<span>Москва, ул. Примерная, д. 123</span>
+			</div>
+		</div>
+	</footer>
+
+</WebGLLayout>
