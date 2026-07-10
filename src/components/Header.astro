@@ -1,0 +1,143 @@
+---
+const links = [
+	{ href: '#services', label: 'Услуги' },
+	{ href: '#projects', label: 'Проекты' },
+	{ href: '#process', label: 'Как работаем' },
+	{ href: '#about', label: 'О компании' },
+	{ href: '#contact', label: 'Контакты' },
+];
+---
+
+<header
+	id="site-header"
+	class="fixed top-0 inset-x-0 z-50 transition-all duration-500"
+	data-header
+>
+	<div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+		<div
+			class="flex items-center justify-between h-[72px] border-b transition-colors duration-500"
+			style="border-color: var(--line-soft);"
+			data-header-inner
+		>
+			<!-- Логотип -->
+			<a href="#top" class="flex items-center gap-3 group">
+				<span
+					class="grid place-items-center w-9 h-9 rounded-md text-white text-lg font-bold shrink-0"
+					style="background: var(--accent);"
+				>М</span>
+				<span class="flex flex-col leading-none">
+					<span class="font-display text-xl font-bold tracking-tight" data-logo-text>МОНОЛИТ</span>
+					<span class="eyebrow text-[9px] mt-1 opacity-60" data-logo-sub>строительная компания</span>
+				</span>
+			</a>
+
+			<!-- Навигация -->
+			<nav class="hidden lg:flex items-center gap-8 text-sm font-medium" data-nav>
+				{links.map((l) => (
+					<a href={l.href} class="nav-link transition-colors whitespace-nowrap">{l.label}</a>
+				))}
+			</nav>
+
+			<div class="flex items-center gap-4 lg:pl-8">
+				<a
+					href="tel:+74951234567"
+					class="hidden md:block text-sm font-semibold tracking-tight whitespace-nowrap"
+					data-phone
+				>+7 (495) 123-45-67</a>
+				<a href="#contact" class="btn btn-accent hidden sm:inline-flex text-sm py-2.5 px-5">
+					Обсудить проект
+				</a>
+
+				<!-- Бургер -->
+				<button
+					class="lg:hidden grid place-items-center w-10 h-10 -mr-2"
+					aria-label="Меню"
+					onclick="document.getElementById('mobile-nav').classList.toggle('translate-x-full'); document.body.classList.toggle('overflow-hidden');"
+				>
+					<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+						<path d="M4 7h16M4 12h16M4 17h16" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Мобильное меню -->
+<div
+	id="mobile-nav"
+	class="fixed inset-0 z-[60] translate-x-full transition-transform duration-500 ease-out lg:hidden"
+	style="background: var(--night); color: var(--paper);"
+>
+	<div class="flex items-center justify-between h-[72px] px-6 border-b" style="border-color: rgba(255,255,255,0.12);">
+		<span class="font-display text-xl font-bold">МОНОЛИТ</span>
+		<button
+			class="grid place-items-center w-10 h-10 -mr-2"
+			aria-label="Закрыть"
+			onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden');"
+		>
+			<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+				<path d="M6 6l12 12M18 6L6 18" />
+			</svg>
+		</button>
+	</div>
+	<nav class="flex flex-col px-6 py-6">
+		{links.map((l, i) => (
+			<a
+				href={l.href}
+				class="font-display text-3xl py-4 border-b flex items-center justify-between"
+				style="border-color: rgba(255,255,255,0.08);"
+				onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden');"
+			>
+				<span>{l.label}</span>
+				<span class="eyebrow text-xs opacity-40">0{i + 1}</span>
+			</a>
+		))}
+	</nav>
+	<div class="px-6 mt-4">
+		<a href="tel:+74951234567" class="block text-2xl font-semibold mb-6">+7 (495) 123-45-67</a>
+		<a
+			href="#contact"
+			class="btn btn-accent w-full justify-center"
+			onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden');"
+		>Обсудить проект</a>
+	</div>
+</div>
+
+<script is:inline>
+	(() => {
+		const header = document.querySelector('[data-header]');
+		const inner = document.querySelector('[data-header-inner]');
+		const nav = document.querySelector('[data-nav]');
+		const phone = document.querySelector('[data-phone]');
+		const logoText = document.querySelector('[data-logo-text]');
+		const logoSub = document.querySelector('[data-logo-sub]');
+
+		const onScroll = () => {
+			const solid = window.scrollY > 40;
+			if (solid) {
+				header.style.background = 'rgba(244,241,234,0.85)';
+				header.style.backdropFilter = 'blur(14px)';
+				header.style.boxShadow = '0 1px 0 rgba(23,20,15,0.08)';
+				inner.style.borderColor = 'transparent';
+			} else {
+				header.style.background = 'transparent';
+				header.style.backdropFilter = 'none';
+				header.style.boxShadow = 'none';
+				inner.style.borderColor = 'rgba(255,255,255,0.14)';
+			}
+		};
+
+		// В самом верху шапка на тёмном hero — светлый текст
+		const applyTone = () => {
+			const light = window.scrollY <= 40;
+			const color = light ? '#f4f1ea' : '#17140f';
+			[nav, phone, logoText].forEach((el) => el && (el.style.color = color));
+			if (logoSub) logoSub.style.color = color;
+		};
+
+		onScroll();
+		applyTone();
+		window.addEventListener('scroll', () => { onScroll(); applyTone(); }, { passive: true });
+	})();
+</script>

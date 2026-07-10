@@ -1,0 +1,71 @@
+---
+const stats = [
+	{ value: 18, suffix: '', label: 'лет на рынке' },
+	{ value: 240, suffix: '+', label: 'сданных объектов' },
+	{ value: 10, suffix: ' лет', label: 'гарантия' },
+];
+---
+
+<section id="top" class="relative min-h-screen flex flex-col justify-end overflow-hidden" style="background: var(--night);">
+	<!-- Фон -->
+	<div class="absolute inset-0 img-frame dark">
+		<img
+			src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
+			alt="Строительство современного здания"
+			class="img-cover"
+			loading="eager"
+			style="opacity: 0.55;"
+		/>
+		<!-- Затемнение -->
+		<div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(20,18,13,0.65) 0%, rgba(20,18,13,0.35) 40%, rgba(20,18,13,0.92) 100%);"></div>
+		<!-- Сетка-блюпринт -->
+		<div class="absolute inset-0 opacity-[0.08]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 64px 64px;"></div>
+	</div>
+
+	<div class="relative max-w-[1280px] mx-auto w-full px-5 sm:px-8 pt-32 pb-14 text-white">
+		<div class="reveal max-w-4xl">
+			<span class="eyebrow inline-flex items-center gap-3" style="color: var(--accent-2);">
+				<span class="w-8 h-px" style="background: var(--accent-2);"></span>
+				Строительная компания полного цикла
+			</span>
+
+			<h1 class="font-display font-bold leading-[0.98] tracking-tight mt-6 text-[clamp(2.6rem,7vw,6rem)]">
+				Строим то,<br />
+				что <span class="italic" style="color: var(--accent-2);">останется</span> надолго
+			</h1>
+
+			<p class="mt-7 text-lg sm:text-xl text-white/75 max-w-2xl leading-relaxed">
+				Проектирование, строительство и отделка жилых домов и коммерческих объектов «под ключ».
+				Работаем по фиксированной смете и сдаём точно в срок.
+			</p>
+
+			<div class="mt-9 flex flex-wrap items-center gap-4">
+				<a href="#contact" class="btn btn-accent">
+					Рассчитать стоимость
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+				</a>
+				<a href="#projects" class="btn btn-ghost-light">Смотреть проекты</a>
+			</div>
+		</div>
+
+		<!-- Статистика -->
+		<div class="reveal mt-16 sm:mt-20 grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl border-t pt-8" style="border-color: rgba(255,255,255,0.15); --reveal-delay: 150ms;">
+			{stats.map((s) => (
+				<div>
+					<div class="font-display text-4xl sm:text-5xl font-bold">
+						<span data-count={s.value} data-suffix={s.suffix}>0{s.suffix}</span>
+					</div>
+					<div class="text-sm text-white/60 mt-1">{s.label}</div>
+				</div>
+			))}
+		</div>
+	</div>
+
+	<!-- Индикатор скролла -->
+	<div class="relative hidden md:flex justify-center pb-6">
+		<span class="eyebrow text-white/40 flex flex-col items-center gap-2">
+			<span>Листайте вниз</span>
+			<svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v18M2 14l6 6 6-6"/></svg>
+		</span>
+	</div>
+</section>

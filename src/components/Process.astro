@@ -1,0 +1,32 @@
+---
+const steps = [
+	{ n: '01', title: 'Заявка и встреча', desc: 'Обсуждаем задачу, выезжаем на участок и фиксируем требования и бюджет.' },
+	{ n: '02', title: 'Проект и смета', desc: 'Готовим проект, 3D-визуализацию и прозрачную смету с фиксированной ценой.' },
+	{ n: '03', title: 'Договор', desc: 'Закрепляем сроки, этапы оплаты и гарантии. Никаких скрытых доплат.' },
+	{ n: '04', title: 'Строительство', desc: 'Ведём работы с личным прорабом и еженедельным фотоотчётом о ходе стройки.' },
+	{ n: '05', title: 'Сдача и гарантия', desc: 'Принимаете готовый объект, получаете документы и гарантию до 10 лет.' },
+];
+---
+
+<section id="process" class="py-24 sm:py-32 relative overflow-hidden" style="background: var(--night); color: var(--paper);">
+	<div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 56px 56px;"></div>
+
+	<div class="relative max-w-[1280px] mx-auto px-5 sm:px-8">
+		<div class="reveal max-w-2xl mb-16">
+			<span class="eyebrow" style="color: var(--accent-2);">03 — Как мы работаем</span>
+			<h2 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] mt-4">
+				Пять понятных этапов<br class="hidden sm:block" /> от идеи до ключей
+			</h2>
+		</div>
+
+		<div class="grid md:grid-cols-5 gap-px" style="background: rgba(255,255,255,0.12);">
+			{steps.map((s, i) => (
+				<div class="reveal p-7 md:p-6 lg:p-8 flex flex-col min-h-[220px]" style={`background: var(--night); --reveal-delay: ${i * 80}ms;`}>
+					<span class="font-display text-5xl font-bold" style="color: var(--accent-2);">{s.n}</span>
+					<h3 class="text-lg font-semibold mt-6">{s.title}</h3>
+					<p class="text-sm text-white/55 mt-2 leading-relaxed">{s.desc}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>

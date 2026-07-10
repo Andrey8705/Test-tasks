@@ -1,0 +1,15 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "description": "Собирает автономный HTML-тизер для строительной компании из финмодели (Excel) + метаданных проекта. Один HTML-файл: фон и диаграммы встроены (инлайн-SVG, без внешних библиотек), открывается в браузере, печатается в PDF, пересылается партнёрам.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}

@@ -1,0 +1,79 @@
+---
+const services = [
+	{
+		num: '01',
+		title: 'Проектирование',
+		desc: 'Архитектурные, конструктивные и инженерные разделы. 3D-визуализация до начала работ и полный пакет документации.',
+		icon: 'M3 21h18M5 21V7l7-4 7 4v14M9 9h6M9 13h6M9 17h6',
+	},
+	{
+		num: '02',
+		title: 'Строительство «под ключ»',
+		desc: 'Полный цикл: от фундамента до кровли. Монолит, кирпич, каркас, газобетон — подбираем технологию под бюджет и задачу.',
+		icon: 'M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6',
+	},
+	{
+		num: '03',
+		title: 'Коммерческие объекты',
+		desc: 'Торговые центры, склады, офисы и производственные здания. Соблюдаем нормы, сроки и требования эксплуатации.',
+		icon: 'M3 21h18M6 21V5h12v16M9 9h.01M15 9h.01M9 13h.01M15 13h.01',
+	},
+	{
+		num: '04',
+		title: 'Реконструкция',
+		desc: 'Усиление конструкций, перепланировка, надстройка этажей и капитальный ремонт с сохранением эксплуатации объекта.',
+		icon: 'M12 2l9 4.9V17L12 22 3 17V6.9L12 2zM12 22V12M3 6.9L12 12l9-5.1',
+	},
+	{
+		num: '05',
+		title: 'Инженерные системы',
+		desc: 'Отопление, водоснабжение, вентиляция, электрика и слаботочные сети. Проектируем и монтируем в едином контуре.',
+		icon: 'M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01',
+	},
+	{
+		num: '06',
+		title: 'Отделка и благоустройство',
+		desc: 'Чистовая отделка любой сложности, фасады, ландшафт и территория. Сдаём объект, готовый к заселению.',
+		icon: 'M12 3l8 4v10l-8 4-8-4V7l8-4zM12 12l8-4M12 12v9M12 12L4 8',
+	},
+];
+---
+
+<section id="services" class="py-24 sm:py-32">
+	<div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+		<!-- Заголовок секции -->
+		<div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+			<div>
+				<span class="eyebrow" style="color: var(--accent);">01 — Что мы делаем</span>
+				<h2 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] mt-4 max-w-2xl">
+					Полный цикл строительства<br class="hidden sm:block" /> в одной команде
+				</h2>
+			</div>
+			<p class="text-[var(--muted)] max-w-sm md:text-right leading-relaxed">
+				Вам не нужно искать десяток подрядчиков — проектировщики, прорабы и отделочники работают внутри «МОНОЛИТ».
+			</p>
+		</div>
+
+		<!-- Сетка карточек -->
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden" style="background: var(--line);">
+			{services.map((s, i) => (
+				<article
+					class="svc-card reveal p-8 sm:p-10 flex flex-col min-h-[300px]"
+					style={`--reveal-delay: ${(i % 3) * 90}ms;`}
+				>
+					<div class="flex items-start justify-between">
+						<div class="svc-icon grid place-items-center w-14 h-14 rounded-xl border transition-colors" style="border-color: var(--line);">
+							<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+								<path d={s.icon} />
+							</svg>
+						</div>
+						<span class="svc-num font-display text-2xl" style="color: var(--line);">{s.num}</span>
+					</div>
+
+					<h3 class="font-display text-2xl font-semibold mt-8">{s.title}</h3>
+					<p class="svc-muted text-[var(--muted)] mt-3 leading-relaxed text-[0.95rem]">{s.desc}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>

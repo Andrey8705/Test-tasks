@@ -1,0 +1,81 @@
+---
+const projects = [
+	{
+		title: 'ЖК «Резиденция Парк»',
+		cat: 'Жилой комплекс · 24 000 м²',
+		year: '2024',
+		img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+		wide: true,
+	},
+	{
+		title: 'Загородная резиденция',
+		cat: 'Частный дом · 640 м²',
+		year: '2023',
+		img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80',
+		wide: false,
+	},
+	{
+		title: 'Бизнес-центр «Меридиан»',
+		cat: 'Коммерция · 12 этажей',
+		year: '2023',
+		img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
+		wide: false,
+	},
+	{
+		title: 'Логистический комплекс',
+		cat: 'Склад класса А · 18 000 м²',
+		year: '2022',
+		img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+		wide: true,
+	},
+];
+---
+
+<section id="projects" class="py-24 sm:py-32" style="background: var(--paper-2);">
+	<div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+		<div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+			<div>
+				<span class="eyebrow" style="color: var(--accent);">02 — Избранные работы</span>
+				<h2 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] mt-4">
+					Проекты, которыми<br class="hidden sm:block" /> мы гордимся
+				</h2>
+			</div>
+			<a href="#contact" class="btn btn-ghost self-start md:self-auto">
+				Весь портфель объектов
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+			</a>
+		</div>
+
+		<div class="grid md:grid-cols-3 gap-5">
+			{projects.map((p, i) => (
+				<a
+					href="#contact"
+					class={`group reveal relative block rounded-2xl overflow-hidden img-frame ${p.wide ? 'md:col-span-2' : 'md:col-span-1'}`}
+					style={`--reveal-delay: ${(i % 2) * 120}ms; aspect-ratio: ${p.wide ? '16/10' : '4/5'};`}
+				>
+					<img
+						src={p.img}
+						alt={p.title}
+						class="img-cover transition-transform duration-700 ease-out group-hover:scale-105"
+						loading="lazy"
+					/>
+					<div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(20,18,13,0) 35%, rgba(20,18,13,0.85) 100%);"></div>
+
+					<div class="absolute top-5 left-5">
+						<span class="eyebrow text-white/90 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1.5 text-[10px]">{p.year}</span>
+					</div>
+
+					<div class="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
+						<span class="text-sm text-white/70">{p.cat}</span>
+						<h3 class="font-display text-2xl sm:text-3xl font-semibold mt-1 flex items-center gap-3">
+							{p.title}
+							<span class="inline-grid place-items-center w-8 h-8 rounded-full bg-white/15 backdrop-blur-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+								<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+							</span>
+						</h3>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

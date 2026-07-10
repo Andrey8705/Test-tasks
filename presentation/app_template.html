@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Конструктор презентаций</title>
+<script>/*__SHEETJS__*/</script>
+<style>
+  :root{
+    --ochre:#D9761F; --ochre-light:#E9A85E; --cream:#F5ECE1;
+    --text:#F5ECE1; --muted:rgba(245,236,225,.62);
+    --card-border:rgba(233,168,94,.28); --card-fill:rgba(255,255,255,.045);
+    --bar-h:56px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:#0f0805;font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+
+  /* ── Панель инструментов (только на экране) ── */
+  .app-bar{position:fixed;top:0;left:0;right:0;height:var(--bar-h);z-index:50;
+    display:flex;align-items:center;gap:14px;padding:0 18px;
+    background:#1c0f08;border-bottom:1px solid var(--card-border)}
+  .app-bar .brand{font-weight:800;letter-spacing:.02em;margin-right:6px}
+  .app-bar .brand span{color:var(--ochre)}
+  .btn{border:1px solid var(--card-border);background:rgba(233,168,94,.10);color:var(--cream);
+    border-radius:9px;padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.15s}
+  .btn:hover{background:rgba(233,168,94,.2)}
+  .btn.primary{background:var(--ochre);border-color:var(--ochre);color:#231204}
+  .btn.primary:hover{background:var(--ochre-light)}
+  .rate{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
+  .rate input{width:82px;background:#291709;border:1px solid var(--card-border);color:var(--cream);
+    border-radius:7px;padding:7px 9px;font-size:13px}
+  .spacer{flex:1}
+  .status{font-size:12.5px;color:var(--muted);max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .status.ok{color:#5fcf9e}.status.err{color:#ff8f7a}
+  input[type=file]{display:none}
+
+  /* ── Выезжающая панель настроек ── */
+  .drawer{position:fixed;top:var(--bar-h);right:0;bottom:0;width:380px;z-index:45;
+    background:#180d06;border-left:1px solid var(--card-border);overflow-y:auto;
+    transform:translateX(100%);transition:transform .25s;padding:18px 20px 60px}
+  .drawer.open{transform:translateX(0)}
+  .drawer h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre-light);
+    margin:22px 0 10px;border-bottom:1px solid var(--card-border);padding-bottom:6px}
+  .drawer h3:first-child{margin-top:0}
+  .fld{margin-bottom:11px}
+  .fld label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}
+  .fld input,.fld textarea{width:100%;background:#291709;border:1px solid var(--card-border);
+    color:var(--cream);border-radius:7px;padding:8px 10px;font-size:13px;font-family:inherit}
+  .fld textarea{resize:vertical;min-height:52px;line-height:1.4}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .item{border:1px solid var(--card-border);border-radius:10px;padding:12px;margin-bottom:12px;position:relative}
+  .item .rm{position:absolute;top:8px;right:8px;background:none;border:none;color:#ff8f7a;cursor:pointer;font-size:16px;line-height:1}
+  .add{width:100%;margin-top:2px}
+  .fin-readout{font-size:12px;color:var(--muted);line-height:1.7}
+  .fin-readout b{color:var(--cream)}
+  .hint{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:8px}
+
+  /* ── Слайды (тот же дизайн, палитра «жжёная охра») ── */
+  .stage{padding-top:var(--bar-h)}
+  .deck{height:calc(100vh - var(--bar-h));overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{position:relative;height:calc(100vh - var(--bar-h));scroll-snap-align:start;
+    padding:6vh 6vw 9vh;display:flex;flex-direction:column;
+    background-size:cover;background-position:center}
+  .slide--title{justify-content:center}
+  b{font-weight:700}
+  h1,h2,.kpi-value,.offer-invest,.offer-payout{font-weight:800;letter-spacing:-.01em}
+  .kicker{display:flex;align-items:center;gap:12px;letter-spacing:.3em;font-size:clamp(11px,1.05vw,14px);font-weight:700;color:var(--muted);margin-bottom:3.5vh}
+  .kicker-mark{width:26px;height:3px;background:var(--ochre);display:inline-block}
+  .kicker .sep{opacity:.5}
+  .title{font-size:clamp(46px,6.6vw,98px);line-height:.98}
+  .title::after{content:"";display:block;width:84px;height:5px;background:var(--ochre);margin-top:26px;border-radius:3px}
+  .subtitle{font-size:clamp(16px,1.9vw,26px);font-weight:400;margin:22px 0 5vh}
+  .subtitle .dot{color:var(--ochre)}
+  .title-facts{display:grid;grid-template-columns:1fr 1fr;gap:3vw;max-width:1020px}
+  .fact{border-left:3px solid var(--ochre);padding-left:18px}
+  .fact p{font-size:clamp(13px,1.15vw,17px);line-height:1.75}
+  .section-title{font-size:clamp(24px,3vw,40px);border-left:5px solid var(--ochre);padding-left:20px;margin-bottom:4vh;flex:0 0 auto}
+  .section-title .sep,.offer-head .sep,.chart-head .sep{color:var(--ochre);font-weight:400}
+  .econ-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;flex:1;min-height:0}
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:18px}
+  .kpi-card{border:1px solid var(--card-border);background:var(--card-fill);border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .kpi-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ochre)}
+  .kpi-value{font-size:clamp(30px,4vw,54px);line-height:1;margin-bottom:10px}
+  .kpi-label{font-size:clamp(10px,1vw,13px);letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+  .chart-card{border:1px solid var(--card-border);background:var(--card-fill);border-radius:14px;padding:22px 26px;display:flex;flex-direction:column}
+  .chart-head{font-size:clamp(13px,1.2vw,16px);font-weight:700;color:var(--muted);margin-bottom:8px}
+  .donut-wrap{display:flex;align-items:center;gap:18px;flex:1;min-height:0}
+  .donut{width:46%;max-width:210px;aspect-ratio:1}
+  .legend{display:flex;flex-direction:column;gap:12px;flex:1}
+  .lg-row{display:flex;align-items:center;gap:9px;font-size:clamp(11px,1vw,14px)}
+  .lg-dot{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+  .lg-name{font-weight:600}.lg-val{margin-left:auto;color:var(--muted)}
+  .chips{display:flex;gap:10px;margin-top:14px}
+  .chip{border:1px solid var(--card-border);border-radius:999px;padding:6px 14px;font-size:12px;letter-spacing:.06em;color:var(--muted)}
+  .chip b{color:var(--ochre-light);margin-left:4px}
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .offer-card{border:1px solid var(--card-border);background:var(--card-fill);border-radius:14px;padding:24px 28px}
+  .offer-head{font-size:clamp(12px,1.15vw,16px);font-weight:700;letter-spacing:.03em;color:var(--muted);margin-bottom:16px}
+  .offer-row{display:flex;justify-content:space-between;align-items:baseline}
+  .offer-sub{font-size:clamp(10px,1vw,13px);letter-spacing:.05em;color:var(--muted)}
+  .offer-rate{font-size:clamp(12px,1.1vw,15px);font-weight:700;color:var(--ochre-light)}
+  .offer-invest{font-size:clamp(28px,3.2vw,44px);margin:2px 0}
+  .offer-payout{font-size:clamp(24px,2.7vw,38px);color:var(--ochre-light);margin:2px 0 14px}
+  .offer-payout .cur{font-size:.5em;color:var(--muted);font-weight:600}
+  .bar{margin:4px 0 10px}
+  .bar-legend{display:flex;justify-content:space-between;gap:10px;font-size:clamp(10px,.95vw,12.5px);color:var(--muted)}
+  .bar-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .security-card{border:1px solid var(--card-border);background:rgba(217,118,31,.09);border-radius:14px;padding:18px 26px;margin-top:22px}
+  .security-head{font-size:clamp(12px,1.05vw,15px);font-weight:700;letter-spacing:.05em;color:var(--ochre-light);margin-bottom:8px}
+  .security-head .shield{margin-right:6px}
+  .security-card p{font-size:clamp(12px,1.05vw,15px);line-height:1.5}
+  .security-card .en{color:var(--muted);margin-top:4px}
+  .gantt{flex:0 0 auto;margin-bottom:3vh}
+  .phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+  .phase{display:flex;gap:12px}
+  .phase-idx{width:6px;border-radius:3px;flex:0 0 auto}
+  .phase-title{font-weight:700;font-size:clamp(13px,1.15vw,16px);margin-bottom:6px}
+  .phase-text{font-size:clamp(11px,1vw,13.5px);line-height:1.5}
+  .phase-text.en{color:var(--muted);margin-top:4px}
+  .foot{position:absolute;left:6vw;right:6vw;bottom:4vh;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .pageno{font-weight:700;color:var(--ochre-light)}
+  .nav{position:fixed;right:18px;top:calc(50% + var(--bar-h)/2);transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:20}
+  .dot-nav{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(233,168,94,.6);background:transparent;cursor:pointer;padding:0;transition:.2s}
+  .dot-nav.active{background:var(--ochre);border-color:var(--ochre);transform:scale(1.15)}
+
+  /* ── Печать / экспорт в PDF ── */
+  @media print{
+    @page{size:13.333in 7.5in;margin:0}
+    .app-bar,.drawer,.nav{display:none!important}
+    .stage{padding-top:0}
+    .deck{height:auto;overflow:visible;display:block}
+    .slide{height:7.5in;width:13.333in;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+</style>
+</head>
+<body data-palette="#E4923A,#1FA89B,#B884DE">
+
+  <div class="app-bar">
+    <div class="brand">Конструктор<span>·</span>презентаций</div>
+    <label class="btn" for="xlsx">📊 Загрузить Excel</label>
+    <input type="file" id="xlsx" accept=".xlsx,.xls">
+    <label class="btn" for="bg">🖼 Фон</label>
+    <input type="file" id="bg" accept="image/*">
+    <div class="rate">Курс ₸/$ <input type="number" id="rate" step="0.1"></div>
+    <div class="spacer"></div>
+    <div class="status" id="status">Пример загружен. Загрузите свой ФЭМ или отредактируйте параметры.</div>
+    <button class="btn" id="toggle">⚙ Параметры</button>
+    <button class="btn primary" id="pdf">⬇ Скачать PDF</button>
+  </div>
+
+  <div class="drawer" id="drawer"></div>
+
+  <div class="stage">
+    <div class="deck" id="deck"></div>
+  </div>
+  <div class="nav" id="nav"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   КОНФИГ ПО УМОЛЧАНИЮ  (зеркало config.py — правится и в панели)
+   ═══════════════════════════════════════════════════════════════ */
+const BG_DEFAULT = "__BG_DEFAULT__";
+
+// Матовая палитра диаграмм (землистые тона; CVD ΔE~19, читаемость — за счёт подписей)
+const RAMP = ["#C67E3C","#4F9585","#A277AC"];       // глина-охра · сине-зелёный · пыльно-лиловый
+const BAR_RETURN = "#C67E3C", BAR_PRINCIPAL = "#4F9585";
+
+// Маппинг ячеек ФЭМ  [лист, ячейка]
+const CELLS = {
+  revenue_kzt:      ["НДС расчет","C6"],
+  net_profit_kzt:   ["Dashboard все","C4"],
+  sellable_area_m2: ["Dashboard все","C25"],
+  ros:              ["Dashboard все","C5"],
+  irr:              ["Dashboard все","C8"],
+  area_office:      ["Dashboard все","L17"],
+  area_retail:      ["Dashboard все","L18"],
+  area_parking:     ["Dashboard все","L19"],
+  land_price_sotka_usd: ["PnL все","B3"],   // цена за сотку, USD
+  land_area_ha:         ["PnL все","B5"],   // площадь ЗУ, га
+  floors:               ["PnL все","B6"],   // этажность
+};
+
+// Значения по умолчанию (из присланного ФЭМ) — чтобы приложение
+// показывало полноценный пример сразу при открытии.
+const DEFAULT_KZT = {
+  revenue_kzt: 10713300000, net_profit_kzt: 2566322391.36,
+  sellable_area_m2: 6901, ros: 0.2395, irr: 15.14,
+  area_office: 6232, area_retail: 253, area_parking: 416,
+  land_price_sotka_usd: 90000, land_area_ha: 0.15, floors: 10,
+};
+
+const state = {
+  usdRate: 522.6,
+  rawKZT: {...DEFAULT_KZT},
+  bg: BG_DEFAULT,
+  meta: {
+    brand:"ONER BY HAYAT", year:2026,
+    eyebrow_en:"INVESTMENT TEASER", eyebrow_ru:"ИНВЕСТИЦИОННЫЙ ТИЗЕР",
+    title:"Oner by Hayat",
+    subtitle_ru:"Бизнес-центр класса А в Алматы", subtitle_en:"Class A Business Center in Almaty",
+    location_ru:"Угол улиц Толе би / Абдуллиных", location_en:"Tole Bi / Abdullinykh Str.",
+    format_ru:"Премиальное 10-этажное офисное здание", format_en:"Premium 10-story office building",
+    kpi:[
+      {key:"revenue",    label_ru:"ОБЩАЯ ВЫРУЧКА",         label_en:"TOTAL REVENUE"},
+      {key:"area",       label_ru:"ПЛОЩАДЬ К ПРОДАЖЕ",     label_en:"TOTAL AREA FOR SALE"},
+      {key:"net_profit", label_ru:"ЧИСТАЯ ПРИБЫЛЬ ПРОЕКТА",label_en:"NET PROJECT PROFIT"},
+      {key:"price_m2",   label_ru:"ЦЕНА ЗА М²",            label_en:"PRICE PER M² (USD)"},
+    ],
+    offer_options:[
+      {title_ru:"ОПЦИЯ 1: 1.5 ГОДА",title_en:"OPTION 1: 1.5 YEARS",investment:2000000,rate:0.12,months:18},
+      {title_ru:"ОПЦИЯ 2: 2 ГОДА",  title_en:"OPTION 2: 2 YEARS",  investment:2000000,rate:0.12,months:24},
+    ],
+    security_ru:"100% защита капитала коммерческой недвижимостью БЦ класса А. Приоритетное право выплат из кэш-флоу проекта.",
+    security_en:"100% capital protection backed by Class A commercial real estate assets. Priority distribution from project cash flow.",
+    timeline:[
+      {phase_ru:"Подготовка",phase_en:"Preparation",period_ru:"Июль — Сентябрь 2026",period_en:"Jul — Sep 2026",start:"2026-07",end:"2026-09",
+       text_ru:"Подготовка площадки, вынос сетей, запуск фундаментных работ.",text_en:"Site preparation, utility relocation, foundation work kick-off."},
+      {phase_ru:"Строительство",phase_en:"Construction",period_ru:"Октябрь 2026 — Август 2027",period_en:"Oct 2026 — Aug 2027",start:"2026-10",end:"2027-08",
+       text_ru:"Монолитные работы (10 этажей), остекление, фасады, внутренние сети.",text_en:"Concrete framework (10 stories), glazing, facades, MEP installations."},
+      {phase_ru:"Ввод и расчёт",phase_en:"Commissioning",period_ru:"Сентябрь — Декабрь 2027",period_en:"Sep — Dec 2027",start:"2027-09",end:"2027-12",
+       text_ru:"Ввод БЦ в эксплуатацию, закрытие продаж лотов, полный расчёт с инвестором.",text_en:"Building commissioning, sales closure, full investor principal + return payout."},
+    ],
+  }
+};
+
+/* ── Утилиты форматирования ── */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtInt = v => Math.round(v).toLocaleString('en-US');
+const usdInt = v => "$"+fmtInt(v);
+const usdM = v => { const m=v/1e6; return "$"+(m<10?m.toFixed(2):m.toFixed(1))+"M"; };
+const areaFmt = v => fmtInt(v)+" m²";
+
+/* ── Финансы: пересчёт из тенге по курсу ── */
+function fin(){
+  const r=state.usdRate||1, k=state.rawKZT;
+  const f={
+    revenue_usd:k.revenue_kzt/r, net_profit_usd:k.net_profit_kzt/r,
+    area_m2:k.sellable_area_m2, ros:k.ros, irr:k.irr,
+    area_mix:[["Офисы / Offices",k.area_office||0],["Коммерция / Retail",k.area_retail||0],["Паркинг / Parking",k.area_parking||0]],
+  };
+  f.price_m2_usd = f.area_m2 ? f.revenue_usd/f.area_m2 : 0;
+  const ha=k.land_area_ha||0, ps=k.land_price_sotka_usd||0;
+  f.land={ha, sotka:ha*100, m2:ha*10000, price_sotka_usd:ps, total_usd:ha*100*ps, floors:k.floors||0};
+  f.land.efficiency = f.land.m2 ? f.area_m2/f.land.m2 : 0;
+  return f;
+}
+function kpiValue(key,f){return{revenue:usdM(f.revenue_usd),net_profit:usdM(f.net_profit_usd),area:areaFmt(f.area_m2),price_m2:usdInt(f.price_m2_usd)}[key]||"—";}
+
+/* ═══════════════════ ДИАГРАММЫ (инлайн-SVG) ═══════════════════ */
+function svgDonut(segments){
+  const r=84,sw=30,c=120,C=2*Math.PI*r,gap=2.4;
+  const total=segments.reduce((s,x)=>s+x[1],0)||1;
+  let p=[`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="${sw}"/>`],off=0;
+  segments.forEach((seg,i)=>{
+    const s=seg[1]/total*C,dash=Math.max(s-gap,.5);
+    p.push(`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${RAMP[i%RAMP.length]}" stroke-width="${sw}" stroke-dasharray="${dash.toFixed(2)} ${(C-dash).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${c} ${c})"><title>${esc(seg[0])}: ${fmtInt(seg[1])} m² (${Math.round(seg[1]/total*100)}%)</title></circle>`);
+    off+=s;
+  });
+  const center=segments.reduce((s,x)=>s+x[1],0);
+  p.push(`<text x="${c}" y="${c-6}" text-anchor="middle" fill="var(--cream)" font-size="30" font-weight="800">${fmtInt(center)}</text><text x="${c}" y="${c+18}" text-anchor="middle" fill="rgba(245,236,225,.6)" font-size="13" letter-spacing="1.5">m² GLA</text>`);
+  return `<svg viewBox="0 0 240 240" width="100%" height="100%" role="img" aria-label="Структура площадей">${p.join('')}</svg>`;
+}
+function donutLegend(segments){
+  const total=segments.reduce((s,x)=>s+x[1],0)||1;
+  return `<div class="legend">`+segments.map((seg,i)=>`<div class="lg-row"><span class="lg-dot" style="background:${RAMP[i%RAMP.length]}"></span><span class="lg-name">${esc(seg[0])}</span><span class="lg-val">${fmtInt(seg[1])} m² · ${Math.round(seg[1]/total*100)}%</span></div>`).join('')+`</div>`;
+}
+function svgPayoutBar(principal,income,scaleMax){
+  const W=320,H=22,pw=principal/scaleMax*W,iw=income/scaleMax*W,gap=2;
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img"><rect x="0" y="0" width="${Math.max(pw-gap,1).toFixed(1)}" height="${H}" rx="4" fill="${BAR_PRINCIPAL}"><title>Тело / Principal: ${usdInt(principal)}</title></rect><rect x="${pw.toFixed(1)}" y="0" width="${Math.max(iw,1).toFixed(1)}" height="${H}" rx="4" fill="${BAR_RETURN}"><title>Доход / Return: ${usdInt(income)}</title></rect></svg>`;
+}
+function svgLandBars(m2,gla){
+  const W=340,H=118,scale=Math.max(m2,gla)||1;
+  const rows=[["Участок / Plot",m2,RAMP[1]],["Продаваемая / GLA",gla,RAMP[0]]];
+  let p=[`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Эффективность застройки">`];
+  rows.forEach(([label,val,color],i)=>{
+    const y=10+i*58,bw=Math.max(val/scale*W,3);
+    p.push(`<text x="0" y="${y}" fill="rgba(245,236,225,.62)" font-size="13">${esc(label)}</text>`);
+    p.push(`<rect x="0" y="${y+8}" width="${bw.toFixed(1)}" height="26" rx="6" fill="${color}"/>`);
+    p.push(`<text x="${Math.min(bw-8,W-8).toFixed(1)}" y="${y+26}" text-anchor="end" fill="#241204" font-size="14" font-weight="800">${fmtInt(val)} m²</text>`);
+  });
+  p.push('</svg>');return p.join('');
+}
+function svgGantt(timeline){
+  const midx=ym=>{const[y,m]=ym.split('-').map(Number);return y*12+(m-1);};
+  const starts=timeline.map(t=>midx(t.start)),ends=timeline.map(t=>midx(t.end));
+  const m0=Math.min(...starts),m1=Math.max(...ends),span=(m1-m0+1);
+  const W=1060,L=8,R=8,T=14,plotW=W-L-R,rowH=46,rowGap=16,rowsTop=T+26;
+  const H=rowsTop+timeline.length*(rowH+rowGap)+34;
+  const xOf=(mi,edge)=>L+(mi-m0+edge)/span*plotW;
+  let s=[`<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" role="img" aria-label="Сроки проекта">`];
+  for(let mi=m0;mi<=m1+1;mi++){
+    const y=Math.floor(mi/12),mo=mi%12,x=xOf(mi,0);
+    if(mo%3===0){
+      s.push(`<line x1="${x.toFixed(1)}" y1="${rowsTop-8}" x2="${x.toFixed(1)}" y2="${H-24}" stroke="rgba(255,255,255,.10)" stroke-width="1"/>`);
+      s.push(`<text x="${(x+4).toFixed(1)}" y="${H-8}" fill="rgba(245,236,225,.55)" font-size="12">${String(mo+1).padStart(2,'0')}.${String(y).slice(2)}</text>`);
+    }
+  }
+  timeline.forEach((t,i)=>{
+    const y=rowsTop+i*(rowH+rowGap),x0=xOf(midx(t.start),0),x1=xOf(midx(t.end),1),bw=Math.max(x1-x0-3,6),color=RAMP[i%RAMP.length];
+    s.push(`<rect x="${x0.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${rowH}" rx="8" fill="${color}"><title>${esc(t.phase_ru)}: ${esc(t.period_ru)}</title></rect>`);
+    const label=esc(t.phase_ru);
+    if(bw>150){
+      s.push(`<text x="${(x0+16).toFixed(1)}" y="${(y+rowH/2-2).toFixed(1)}" fill="#2a1607" font-size="15" font-weight="700">${label}</text><text x="${(x0+16).toFixed(1)}" y="${(y+rowH/2+16).toFixed(1)}" fill="rgba(42,22,7,.72)" font-size="12">${esc(t.period_ru)}</text>`);
+    }else{
+      s.push(`<text x="${(x1+12).toFixed(1)}" y="${(y+rowH/2+5).toFixed(1)}" fill="var(--cream)" font-size="14" font-weight="700">${label} <tspan fill="rgba(245,236,225,.6)">${esc(t.period_ru)}</tspan></text>`);
+    }
+  });
+  s.push('</svg>');return s.join('');
+}
+
+/* ═══════════════════ СБОРКА СЛАЙДОВ ═══════════════════ */
+function foot(n){return `<div class="foot"><span>${esc(state.meta.brand)} © ${esc(state.meta.year)}</span><span class="pageno">${String(n).padStart(2,'0')}</span></div>`;}
+
+function buildSlides(){
+  const P=state.meta,f=fin(),bg=`linear-gradient(180deg,rgba(58,30,12,.55) 0%,rgba(36,19,9,.86) 52%,rgba(15,8,5,.97) 100%),url('${state.bg}')`;
+  const bgStyle=`style="background-image:${bg}"`;
+
+  const s1=`<section class="slide slide--title" ${bgStyle}>
+    <div class="kicker"><span class="kicker-mark"></span>${esc(P.eyebrow_en)} <span class="sep">/</span> ${esc(P.eyebrow_ru)}</div>
+    <h1 class="title">${esc(P.title)}</h1>
+    <p class="subtitle">${esc(P.subtitle_ru)} <span class="dot">•</span> ${esc(P.subtitle_en)}</p>
+    <div class="title-facts">
+      <div class="fact"><p><b>Локация:</b> ${esc(P.location_ru)}</p><p><b>Формат:</b> ${esc(P.format_ru)}</p></div>
+      <div class="fact"><p><b>Location:</b> ${esc(P.location_en)}</p><p><b>Format:</b> ${esc(P.format_en)}</p></div>
+    </div>${foot(1)}</section>`;
+
+  // ── Земельный участок ──
+  const ld=f.land;
+  const landCards=[
+    [ (ld.ha||0)+" га", `ПЛОЩАДЬ УЧАСТКА / LAND AREA · ${fmtInt(ld.m2)} m²`],
+    [ usdInt(ld.price_sotka_usd), "ЦЕНА ЗА СОТКУ / PRICE PER SOTKA (USD)"],
+    [ usdM(ld.total_usd), "СТОИМОСТЬ УЧАСТКА / LAND VALUE (USD)"],
+    [ String(ld.floors), "ЭТАЖНОСТЬ / FLOORS"],
+  ].map(([v,l])=>`<div class="kpi-card"><div class="kpi-value">${esc(v)}</div><div class="kpi-label">${esc(l)}</div></div>`).join('');
+  const sLand=`<section class="slide" ${bgStyle}>
+    <h2 class="section-title">Земельный участок <span class="sep">/</span> Land Plot</h2>
+    <div class="econ-grid">
+      <div class="kpi-grid">${landCards}</div>
+      <div class="chart-card"><div class="chart-head">Эффективность застройки <span class="sep">/</span> Buildable Efficiency</div>
+        <div class="donut-wrap" style="align-items:flex-start">${svgLandBars(ld.m2,f.area_m2)}</div>
+        <div class="chips"><span class="chip">Плотность застройки / Density <b>×${ld.efficiency.toFixed(1)}</b></span></div></div>
+    </div>${foot(2)}</section>`;
+
+  const cards=P.kpi.map(k=>`<div class="kpi-card"><div class="kpi-value">${esc(kpiValue(k.key,f))}</div><div class="kpi-label">${esc(k.label_ru)} / ${esc(k.label_en)}</div></div>`).join('');
+  let chips='';
+  if(f.ros!=null)chips+=`<span class="chip">ROS <b>${Math.round(f.ros*100)}%</b></span>`;
+  if(f.irr!=null)chips+=`<span class="chip">IRR <b>${Number(f.irr).toFixed(1)}</b></span>`;
+  const s2=`<section class="slide" ${bgStyle}>
+    <h2 class="section-title">Экономика проекта <span class="sep">/</span> Project Economics (USD)</h2>
+    <div class="econ-grid">
+      <div class="kpi-grid">${cards}</div>
+      <div class="chart-card"><div class="chart-head">Структура площадей <span class="sep">/</span> Area Mix</div>
+        <div class="donut-wrap"><div class="donut">${svgDonut(f.area_mix)}</div>${donutLegend(f.area_mix)}</div>
+        <div class="chips">${chips}</div></div>
+    </div>${foot(3)}</section>`;
+
+  const totals=P.offer_options.map(o=>o.investment+o.investment*o.rate*o.months/12);
+  const scaleMax=Math.max(...totals,1);
+  const opts=P.offer_options.map(o=>{
+    const income=o.investment*o.rate*o.months/12,total=o.investment+income;
+    return `<div class="offer-card">
+      <div class="offer-head">${esc(o.title_ru)} <span class="sep">/</span> ${esc(o.title_en)}</div>
+      <div class="offer-row"><span class="offer-sub">ИНВЕСТИЦИИ / INVESTMENT</span><span class="offer-rate">${Math.round(o.rate*100)}% годовых / p.a.</span></div>
+      <div class="offer-invest">${usdInt(o.investment)}</div>
+      <div class="offer-sub" style="margin-top:14px">Выплата через ${o.months} мес. / Total Payout</div>
+      <div class="offer-payout">${usdInt(total)} <span class="cur">USD</span></div>
+      <div class="bar">${svgPayoutBar(o.investment,income,scaleMax)}</div>
+      <div class="bar-legend"><span><i style="background:${BAR_PRINCIPAL}"></i>Тело / Principal ${usdM(o.investment)}</span><span><i style="background:${BAR_RETURN}"></i>Доход / Return ${usdInt(income)}</span></div>
+    </div>`;}).join('');
+  const s3=`<section class="slide" ${bgStyle}>
+    <h2 class="section-title">Инвестиционный оффер <span class="sep">/</span> Investment Offer</h2>
+    <div class="offer-grid">${opts}</div>
+    <div class="security-card"><div class="security-head"><span class="shield">◆</span> ГАРАНТИИ / SECURITY</div>
+      <p>${esc(P.security_ru)}</p><p class="en">${esc(P.security_en)}</p></div>${foot(4)}</section>`;
+
+  const phases=P.timeline.map((t,i)=>`<div class="phase"><span class="phase-idx" style="background:${RAMP[i%RAMP.length]}"></span><div><div class="phase-title">${esc(t.phase_ru)} / ${esc(t.phase_en)}</div><div class="phase-text">${esc(t.text_ru)}</div><div class="phase-text en">${esc(t.text_en)}</div></div></div>`).join('');
+  const s4=`<section class="slide" ${bgStyle}>
+    <h2 class="section-title">Сроки и этапы <span class="sep">/</span> Timeline &amp; Key Milestones</h2>
+    <div class="gantt">${svgGantt(P.timeline)}</div>
+    <div class="phases">${phases}</div>${foot(5)}</section>`;
+
+  return [s1,sLand,s2,s3,s4];
+}
+
+/* ═══════════════════ РЕНДЕР + НАВИГАЦИЯ ═══════════════════ */
+let cur=0;
+function renderDeck(){
+  const deck=document.getElementById('deck');
+  deck.innerHTML=buildSlides().join('');
+  document.title=state.meta.title+" — презентация";
+  const slides=[...deck.querySelectorAll('.slide')];
+  const nav=document.getElementById('nav');
+  nav.innerHTML=slides.map((_,i)=>`<button class="dot-nav${i===cur?' active':''}" data-i="${i}"></button>`).join('');
+  nav.querySelectorAll('.dot-nav').forEach(d=>d.onclick=()=>{cur=+d.dataset.i;slides[cur].scrollIntoView({behavior:'smooth'});});
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){cur=slides.indexOf(en.target);nav.querySelectorAll('.dot-nav').forEach((d,i)=>d.classList.toggle('active',i===cur));}}),{threshold:.6});
+  slides.forEach(s=>io.observe(s));
+}
+document.addEventListener('keydown',e=>{
+  const deck=document.getElementById('deck'),slides=[...deck.querySelectorAll('.slide')];
+  if(['ArrowDown','ArrowRight','PageDown'].includes(e.key)){e.preventDefault();cur=Math.min(slides.length-1,cur+1);slides[cur].scrollIntoView({behavior:'smooth'});}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();cur=Math.max(0,cur-1);slides[cur].scrollIntoView({behavior:'smooth'});}
+});
+
+/* ═══════════════════ ЗАГРУЗКА EXCEL ═══════════════════ */
+function setStatus(msg,cls){const el=document.getElementById('status');el.textContent=msg;el.className='status'+(cls?' '+cls:'');}
+document.getElementById('xlsx').addEventListener('change',ev=>{
+  const file=ev.target.files[0];if(!file)return;
+  const rd=new FileReader();
+  rd.onload=e=>{
+    try{
+      const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+      const miss=[];const raw={};
+      for(const[key,[sheet,coord]]of Object.entries(CELLS)){
+        const ws=wb.Sheets[sheet];
+        if(!ws){if(!miss.includes(sheet))miss.push(sheet);continue;}
+        const cell=ws[coord];
+        raw[key]=cell&&typeof cell.v==='number'?cell.v:(cell?cell.v:null);
+      }
+      if(miss.length){setStatus('Не найдены листы: '+miss.join(', ')+'. Проверьте CELLS.',"err");return;}
+      state.rawKZT=Object.assign({...DEFAULT_KZT},raw);
+      renderAll();
+      setStatus('Загружено: '+file.name+' — цифры обновлены.',"ok");
+    }catch(err){setStatus('Ошибка чтения файла: '+err.message,"err");}
+  };
+  rd.readAsArrayBuffer(file);
+});
+document.getElementById('bg').addEventListener('change',ev=>{
+  const file=ev.target.files[0];if(!file)return;
+  const rd=new FileReader();rd.onload=e=>{state.bg=e.target.result;renderDeck();setStatus('Фон обновлён: '+file.name,"ok");};
+  rd.readAsDataURL(file);
+});
+
+/* ═══════════════════ ПАНЕЛЬ ПАРАМЕТРОВ ═══════════════════ */
+function setPath(path,val){
+  const parts=path.split('.');let o=state;
+  for(let i=0;i<parts.length-1;i++)o=o[parts[i]];
+  o[parts[parts.length-1]]=val;
+}
+function fld(label,path,val,type){return `<div class="fld"><label>${label}</label><input data-path="${path}" type="${type||'text'}" value="${esc(val)}"></div>`;}
+function area(label,path,val){return `<div class="fld"><label>${label}</label><textarea data-path="${path}">${esc(val)}</textarea></div>`;}
+
+function renderDrawer(){
+  const P=state.meta,f=fin();
+  const offers=P.offer_options.map((o,i)=>`<div class="item"><button class="rm" data-rm="offer_options.${i}">✕</button>
+    ${fld('Заголовок (RU)','meta.offer_options.'+i+'.title_ru',o.title_ru)}
+    ${fld('Заголовок (EN)','meta.offer_options.'+i+'.title_en',o.title_en)}
+    <div class="row3">${fld('Тело, $','meta.offer_options.'+i+'.investment',o.investment,'number')}${fld('Ставка, %','meta.offer_options.'+i+'.rate|pct',Math.round(o.rate*100),'number')}${fld('Срок, мес','meta.offer_options.'+i+'.months',o.months,'number')}</div></div>`).join('');
+  const phases=P.timeline.map((t,i)=>`<div class="item"><button class="rm" data-rm="timeline.${i}">✕</button>
+    <div class="row2">${fld('Фаза (RU)','meta.timeline.'+i+'.phase_ru',t.phase_ru)}${fld('Фаза (EN)','meta.timeline.'+i+'.phase_en',t.phase_en)}</div>
+    <div class="row2">${fld('Период (RU)','meta.timeline.'+i+'.period_ru',t.period_ru)}${fld('Период (EN)','meta.timeline.'+i+'.period_en',t.period_en)}</div>
+    <div class="row2">${fld('Начало (ГГГГ-ММ)','meta.timeline.'+i+'.start',t.start)}${fld('Конец (ГГГГ-ММ)','meta.timeline.'+i+'.end',t.end)}</div>
+    ${area('Описание (RU)','meta.timeline.'+i+'.text_ru',t.text_ru)}${area('Описание (EN)','meta.timeline.'+i+'.text_en',t.text_en)}</div>`).join('');
+
+  document.getElementById('drawer').innerHTML=`
+    <h3>Финансы (из Excel)</h3>
+    <div class="fin-readout">Выручка: <b>${usdM(f.revenue_usd)}</b> · Прибыль: <b>${usdM(f.net_profit_usd)}</b><br>Площадь: <b>${areaFmt(f.area_m2)}</b> · Цена/м²: <b>${usdInt(f.price_m2_usd)}</b><br>Офисы/Коммерция/Паркинг: <b>${fmtInt(f.area_mix[0][1])}/${fmtInt(f.area_mix[1][1])}/${fmtInt(f.area_mix[2][1])}</b> м²<br>Участок: <b>${f.land.ha} га</b> · Сотка: <b>${usdInt(f.land.price_sotka_usd)}</b> · Этажей: <b>${f.land.floors}</b></div>
+    <div class="hint">Значения тянутся из ФЭМ по маппингу ячеек. Курс ₸/$ — в верхней панели.</div>
+    <h3>Титул</h3>
+    ${fld('Бренд (подвал)','meta.brand',P.brand)}
+    ${fld('Название','meta.title',P.title)}
+    <div class="row2">${fld('Подзаголовок (RU)','meta.subtitle_ru',P.subtitle_ru)}${fld('Подзаголовок (EN)','meta.subtitle_en',P.subtitle_en)}</div>
+    <div class="row2">${fld('Локация (RU)','meta.location_ru',P.location_ru)}${fld('Локация (EN)','meta.location_en',P.location_en)}</div>
+    <div class="row2">${fld('Формат (RU)','meta.format_ru',P.format_ru)}${fld('Формат (EN)','meta.format_en',P.format_en)}</div>
+    <h3>Оффер</h3>${offers}<button class="btn add" data-add="offer">+ Добавить опцию</button>
+    <h3>Гарантии</h3>${area('Текст (RU)','meta.security_ru',P.security_ru)}${area('Текст (EN)','meta.security_en',P.security_en)}
+    <h3>Сроки и этапы</h3>${phases}<button class="btn add" data-add="phase">+ Добавить этап</button>`;
+}
+
+// делегированные обработчики панели
+document.getElementById('drawer').addEventListener('input',e=>{
+  const inp=e.target.closest('[data-path]');if(!inp)return;
+  let path=inp.dataset.path,val=inp.value;
+  if(path.endsWith('|pct')){path=path.slice(0,-4);val=(parseFloat(val)||0)/100;}
+  else if(inp.type==='number')val=parseFloat(val)||0;
+  setPath(path,val);
+  renderDeck();
+  // обновим только финансовый блок панели, если поменялся курс — здесь не нужно (курс сверху)
+});
+document.getElementById('drawer').addEventListener('click',e=>{
+  const rm=e.target.closest('[data-rm]'),add=e.target.closest('[data-add]');
+  if(rm){const[list,idx]=rm.dataset.rm.split('.');state.meta[list].splice(+idx,1);renderDrawer();renderDeck();}
+  if(add){
+    if(add.dataset.add==='offer')state.meta.offer_options.push({title_ru:"НОВАЯ ОПЦИЯ",title_en:"NEW OPTION",investment:1000000,rate:0.12,months:12});
+    if(add.dataset.add==='phase')state.meta.timeline.push({phase_ru:"Этап",phase_en:"Phase",period_ru:"",period_en:"",start:"2027-01",end:"2027-03",text_ru:"",text_en:""});
+    renderDrawer();renderDeck();
+  }
+});
+document.getElementById('toggle').onclick=()=>{document.getElementById('drawer').classList.toggle('open');};
+
+/* ── Курс ── */
+const rateInp=document.getElementById('rate');rateInp.value=state.usdRate;
+rateInp.addEventListener('input',()=>{state.usdRate=parseFloat(rateInp.value)||1;renderDeck();renderDrawer();});
+
+/* ── Экспорт PDF ── */
+document.getElementById('pdf').onclick=()=>{
+  const open=document.getElementById('drawer').classList.contains('open');
+  document.getElementById('drawer').classList.remove('open');
+  setTimeout(()=>{window.print();if(open)document.getElementById('drawer').classList.add('open');},200);
+};
+
+/* ── Старт ── */
+function renderAll(){renderDeck();renderDrawer();}
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+---
+const contacts = [
+	{ label: 'Телефон', value: '+7 (495) 123-45-67', href: 'tel:+74951234567' },
+	{ label: 'Почта', value: 'info@monolit-stroy.ru', href: 'mailto:info@monolit-stroy.ru' },
+	{ label: 'Офис', value: 'Москва, ул. Строителей, 15, БЦ «Меридиан»', href: '#' },
+	{ label: 'Режим работы', value: 'Пн–Пт 9:00–19:00, Сб 10:00–16:00', href: '#' },
+];
+---
+
+<section id="contact" class="py-24 sm:py-32 relative overflow-hidden" style="background: var(--night); color: var(--paper);">
+	<div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 56px 56px;"></div>
+
+	<div class="relative max-w-[1280px] mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 lg:gap-24">
+		<!-- Левая колонка -->
+		<div class="reveal">
+			<span class="eyebrow" style="color: var(--accent-2);">06 — Обсудить проект</span>
+			<h2 class="font-display text-[clamp(2.2rem,5vw,4rem)] font-bold leading-[1.02] mt-4">
+				Расскажите<br /> о вашей задаче
+			</h2>
+			<p class="text-white/60 mt-6 leading-relaxed max-w-md text-lg">
+				Оставьте заявку — инженер перезвонит в течение рабочего дня, задаст уточняющие вопросы и подготовит предварительный расчёт бесплатно.
+			</p>
+
+			<div class="mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-8">
+				{contacts.map((c) => (
+					<div>
+						<div class="eyebrow text-white/40 text-[10px] mb-2">{c.label}</div>
+						<a href={c.href} class="text-lg font-medium hover:text-[var(--accent-2)] transition-colors">{c.value}</a>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Форма -->
+		<div class="reveal" style="--reveal-delay: 120ms;">
+			<form
+				class="bg-white/[0.04] border border-white/10 rounded-2xl p-7 sm:p-9 backdrop-blur-sm"
+				onsubmit="event.preventDefault(); this.querySelector('[data-success]').classList.remove('hidden'); this.querySelectorAll('input,textarea,select,button[type=submit]').forEach(el=>el.disabled=true);"
+			>
+				<div class="grid sm:grid-cols-2 gap-5">
+					<label class="block">
+						<span class="text-sm text-white/60">Как вас зовут *</span>
+						<input required type="text" placeholder="Иван Петров" class="form-field" />
+					</label>
+					<label class="block">
+						<span class="text-sm text-white/60">Телефон *</span>
+						<input required type="tel" placeholder="+7 (___) ___-__-__" class="form-field" />
+					</label>
+				</div>
+
+				<label class="block mt-5">
+					<span class="text-sm text-white/60">Тип объекта</span>
+					<select class="form-field">
+						<option>Частный дом</option>
+						<option>Многоэтажное жильё</option>
+						<option>Коммерческий объект</option>
+						<option>Реконструкция</option>
+						<option>Другое</option>
+					</select>
+				</label>
+
+				<label class="block mt-5">
+					<span class="text-sm text-white/60">Коротко о проекте</span>
+					<textarea rows="4" placeholder="Площадь, сроки, пожелания…" class="form-field resize-none"></textarea>
+				</label>
+
+				<button type="submit" class="btn btn-accent w-full justify-center mt-6">
+					Отправить заявку
+				</button>
+				<p class="text-xs text-white/40 mt-4 text-center">
+					Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.
+				</p>
+
+				<div data-success class="hidden mt-5 rounded-xl bg-[var(--accent)]/20 border border-[var(--accent-2)]/40 p-4 text-center text-sm">
+					Спасибо! Заявка принята — мы свяжемся с вами в ближайшее время.
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<style>
+	.form-field {
+		width: 100%;
+		margin-top: 0.5rem;
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 0.75rem;
+		padding: 0.85rem 1rem;
+		color: #fff;
+		font-size: 0.95rem;
+		transition: border-color 0.2s ease, background-color 0.2s ease;
+	}
+	.form-field::placeholder { color: rgba(255, 255, 255, 0.35); }
+	.form-field:focus {
+		outline: none;
+		border-color: var(--accent-2);
+		background: rgba(255, 255, 255, 0.08);
+	}
+	.form-field option { color: #17140f; }
+</style>

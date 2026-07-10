@@ -1,0 +1,74 @@
+---
+const points = [
+	'Фиксированная смета — цена в договоре не меняется',
+	'Собственная техника и штат прорабов',
+	'Еженедельный фотоотчёт о ходе работ',
+	'Гарантия на конструктив до 10 лет',
+];
+
+const facts = [
+	{ value: 240, suffix: '+', label: 'сданных объектов' },
+	{ value: 18, suffix: '', label: 'лет опыта' },
+	{ value: 96, suffix: '%', label: 'клиентов по рекомендации' },
+	{ value: 65, suffix: '', label: 'специалистов в штате' },
+];
+---
+
+<section id="about" class="py-24 sm:py-32">
+	<div class="max-w-[1280px] mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+		<!-- Изображение -->
+		<div class="reveal relative">
+			<div class="img-frame rounded-2xl overflow-hidden" style="aspect-ratio: 4/5;">
+				<img
+					src="https://images.unsplash.com/photo-1590725140246-20acdee442be?auto=format&fit=crop&w=1000&q=80"
+					alt="Прораб на строительной площадке"
+					class="img-cover"
+					loading="lazy"
+				/>
+			</div>
+			<!-- Плашка с гарантией -->
+			<div class="absolute -bottom-6 -right-2 sm:right-6 bg-[var(--ink)] text-[var(--paper)] rounded-2xl p-6 sm:p-7 max-w-[220px] shadow-2xl">
+				<div class="font-display text-4xl font-bold" style="color: var(--accent-2);">
+					<span data-count="10" data-suffix=" лет">0 лет</span>
+				</div>
+				<div class="text-sm text-white/60 mt-1">гарантии на несущие конструкции</div>
+			</div>
+		</div>
+
+		<!-- Текст -->
+		<div>
+			<div class="reveal">
+				<span class="eyebrow" style="color: var(--accent);">04 — О компании</span>
+				<h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-bold leading-[1.08] mt-4">
+					С 2007 года строим честно и на совесть
+				</h2>
+				<p class="text-[var(--muted)] mt-6 leading-relaxed text-lg">
+					«МОНОЛИТ» — команда инженеров, архитекторов и строителей, для которых репутация важнее сиюминутной выгоды.
+					Мы отвечаем за результат от первого эскиза до подписания акта приёмки.
+				</p>
+			</div>
+
+			<ul class="reveal mt-8 space-y-4" style="--reveal-delay: 100ms;">
+				{points.map((p) => (
+					<li class="flex items-start gap-3">
+						<span class="grid place-items-center w-6 h-6 rounded-full shrink-0 mt-0.5" style="background: var(--accent);">
+							<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+						</span>
+						<span class="text-[var(--ink-soft)]">{p}</span>
+					</li>
+				))}
+			</ul>
+
+			<div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-10 border-t" style="border-color: var(--line); --reveal-delay: 150ms;">
+				{facts.map((f) => (
+					<div>
+						<div class="font-display text-3xl sm:text-4xl font-bold">
+							<span data-count={f.value} data-suffix={f.suffix}>0{f.suffix}</span>
+						</div>
+						<div class="text-xs sm:text-sm text-[var(--muted)] mt-1 leading-snug">{f.label}</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,27 @@
+---
+const items = [
+	'Частные дома',
+	'Многоэтажное строительство',
+	'Коммерческие объекты',
+	'Реконструкция',
+	'Фасадные работы',
+	'Инженерные системы',
+	'Отделка «под ключ»',
+	'Благоустройство',
+];
+---
+
+<section class="marquee overflow-hidden border-y py-5" style="border-color: var(--line); background: var(--paper-2);">
+	<div class="marquee-track">
+		{[0, 1].map(() => (
+			<div class="flex items-center shrink-0">
+				{items.map((it) => (
+					<span class="flex items-center">
+						<span class="font-display text-xl sm:text-2xl px-8 whitespace-nowrap" style="color: var(--ink-soft);">{it}</span>
+						<span class="w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
+					</span>
+				))}
+			</div>
+		))}
+	</div>
+</section>
